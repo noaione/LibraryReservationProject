@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Storyboard
+namespace LibraryReservation
 {
     static class Program
     {
@@ -16,7 +16,8 @@ namespace Storyboard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            new LoginForm().Show();
+            Application.Run();
         }
     }
 }
