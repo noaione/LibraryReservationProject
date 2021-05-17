@@ -16,12 +16,7 @@ namespace LibraryReservation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            new Reserve_Room().Show();
-            Application.Run();
-=======
             Application.Run(new LoginForm());
->>>>>>> ee2edf8e53a01f2067e28865d37a335de8edaf37
         }
     }
 }
