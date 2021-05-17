@@ -42,18 +42,18 @@ namespace Storyboard
             // 
             this.lblName.AutoSize = true;
             this.lblName.Depth = 0;
-            this.lblName.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblName.Location = new System.Drawing.Point(25, 28);
+            this.lblName.Location = new System.Drawing.Point(32, 24);
             this.lblName.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(110, 18);
+            this.lblName.Size = new System.Drawing.Size(110, 19);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Program Name";
             // 
             // txtInUsername
             // 
-            this.txtInUsername.Location = new System.Drawing.Point(28, 74);
+            this.txtInUsername.Location = new System.Drawing.Point(32, 72);
             this.txtInUsername.Name = "txtInUsername";
             this.txtInUsername.Size = new System.Drawing.Size(155, 20);
             this.txtInUsername.TabIndex = 2;
@@ -61,7 +61,7 @@ namespace Storyboard
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(25, 58);
+            this.lblUsername.Location = new System.Drawing.Point(32, 56);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 3;
@@ -70,7 +70,7 @@ namespace Storyboard
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(25, 103);
+            this.lblPassword.Location = new System.Drawing.Point(32, 104);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 5;
@@ -78,7 +78,7 @@ namespace Storyboard
             // 
             // txtInPassword
             // 
-            this.txtInPassword.Location = new System.Drawing.Point(28, 119);
+            this.txtInPassword.Location = new System.Drawing.Point(32, 120);
             this.txtInPassword.Name = "txtInPassword";
             this.txtInPassword.PasswordChar = '*';
             this.txtInPassword.Size = new System.Drawing.Size(155, 20);
@@ -86,7 +86,7 @@ namespace Storyboard
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(28, 146);
+            this.btnLogin.Location = new System.Drawing.Point(32, 144);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 6;
@@ -97,7 +97,7 @@ namespace Storyboard
             // 
             this.lblRegister.AutoSize = true;
             this.lblRegister.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRegister.Location = new System.Drawing.Point(28, 189);
+            this.lblRegister.Location = new System.Drawing.Point(32, 184);
             this.lblRegister.Name = "lblRegister";
             this.lblRegister.Size = new System.Drawing.Size(112, 13);
             this.lblRegister.TabIndex = 7;
