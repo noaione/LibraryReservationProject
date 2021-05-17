@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryReservation
 {
-    partial class Home_Librarian_
+    partial class Librarian_User
     {
         /// <summary>
         /// Required designer variable.
@@ -39,26 +39,29 @@ namespace LibraryReservation
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(58, 37);
+            this.lblTitle.Location = new System.Drawing.Point(44, 30);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(121, 42);
+            this.lblTitle.Size = new System.Drawing.Size(96, 36);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Home";
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(65, 272);
+            this.btnLogOut.Location = new System.Drawing.Point(49, 221);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(89, 32);
+            this.btnLogOut.Size = new System.Drawing.Size(67, 26);
             this.btnLogOut.TabIndex = 4;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // btnReport
             // 
-            this.btnReport.Location = new System.Drawing.Point(65, 208);
+            this.btnReport.Location = new System.Drawing.Point(49, 169);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(89, 30);
+            this.btnReport.Size = new System.Drawing.Size(67, 24);
             this.btnReport.TabIndex = 5;
             this.btnReport.Text = "Reports";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -66,24 +69,26 @@ namespace LibraryReservation
             // 
             // btnReq
             // 
-            this.btnReq.Location = new System.Drawing.Point(65, 140);
+            this.btnReq.Location = new System.Drawing.Point(49, 114);
+            this.btnReq.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReq.Name = "btnReq";
-            this.btnReq.Size = new System.Drawing.Size(126, 30);
+            this.btnReq.Size = new System.Drawing.Size(94, 24);
             this.btnReq.TabIndex = 6;
             this.btnReq.Text = "See Request";
             this.btnReq.UseVisualStyleBackColor = true;
             // 
-            // Home_Librarian_
+            // Librarian_User
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 416);
+            this.ClientSize = new System.Drawing.Size(325, 338);
             this.Controls.Add(this.btnReq);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lblTitle);
-            this.Name = "Home_Librarian_";
-            this.Text = "Home_Librarian_";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "Librarian_User";
+            this.Text = "Library Reservation";
             this.ResumeLayout(false);
             this.PerformLayout();
 
