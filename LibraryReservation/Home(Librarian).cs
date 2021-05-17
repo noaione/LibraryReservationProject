@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class Home_Librarian_ : Form
+    public partial class Librarian_User : Form
     {
-        public Home_Librarian_()
+        public Librarian_User()
         {
             InitializeComponent();
         }
