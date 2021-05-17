@@ -29,27 +29,14 @@ namespace Storyboard
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new MaterialSkin.Controls.MaterialLabel();
             this.txtInUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtInPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblRegister = new System.Windows.Forms.Label();
+            this.lblProject = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Depth = 0;
-            this.lblName.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblName.Location = new System.Drawing.Point(32, 24);
-            this.lblName.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(110, 19);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Program Name";
             // 
             // txtInUsername
             // 
@@ -103,18 +90,28 @@ namespace Storyboard
             this.lblRegister.TabIndex = 7;
             this.lblRegister.Text = "Register new Account";
             // 
+            // lblProject
+            // 
+            this.lblProject.AutoSize = true;
+            this.lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProject.Location = new System.Drawing.Point(32, 16);
+            this.lblProject.Name = "lblProject";
+            this.lblProject.Size = new System.Drawing.Size(153, 25);
+            this.lblProject.TabIndex = 8;
+            this.lblProject.Text = "Project Name";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 338);
+            this.Controls.Add(this.lblProject);
             this.Controls.Add(this.lblRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtInPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtInUsername);
-            this.Controls.Add(this.lblName);
             this.Name = "LoginForm";
             this.Text = "Library Reservation";
             this.ResumeLayout(false);
@@ -123,14 +120,13 @@ namespace Storyboard
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel lblName;
         private System.Windows.Forms.TextBox txtInUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtInPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblRegister;
+        private System.Windows.Forms.Label lblProject;
     }
 }
 
