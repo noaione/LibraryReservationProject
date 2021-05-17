@@ -16,8 +16,7 @@ namespace LibraryReservation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new LoginForm().Show();
-            Application.Run();
+            Application.Run(new LoginForm());
         }
     }
 }
