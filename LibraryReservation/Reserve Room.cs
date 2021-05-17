@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class User_Home : Form
+    public partial class Reserve_Room : Form
     {
-        public User_Home()
+        public Reserve_Room()
         {
             InitializeComponent();
         }
 
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRsrvRoom_Click(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

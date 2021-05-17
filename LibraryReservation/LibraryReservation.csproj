@@ -74,6 +74,12 @@
     <Compile Include="Home%28User%29.Designer.cs">
       <DependentUpon>Home%28User%29.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reserve Room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reserve Room.Designer.cs">
+      <DependentUpon>Reserve Room.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Home%28Librarian%29.resx">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home%28User%29.resx">
       <DependentUpon>Home%28User%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reserve Room.resx">
+      <DependentUpon>Reserve Room.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
