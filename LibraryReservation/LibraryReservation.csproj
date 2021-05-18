@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditCancleRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCancleRoom.Designer.cs">
+      <DependentUpon>EditCancleRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditRoomReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRoomReservation.Designer.cs">
+      <DependentUpon>EditRoomReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home%28Librarian%29.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,12 @@
     <Compile Include="ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditCancleRoom.resx">
+      <DependentUpon>EditCancleRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRoomReservation.resx">
+      <DependentUpon>EditRoomReservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home%28Librarian%29.resx">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </EmbeddedResource>
