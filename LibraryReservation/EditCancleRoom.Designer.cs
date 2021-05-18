@@ -29,23 +29,23 @@ namespace LibraryReservation
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.listRoom = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblRoom = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(598, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Edit / Cancle Room Reservation Room";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(94, 42);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(598, 37);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Edit / Cancle Room Reservation Room";
             // 
             // listRoom
             // 
@@ -61,57 +61,57 @@ namespace LibraryReservation
             this.listRoom.Size = new System.Drawing.Size(153, 164);
             this.listRoom.TabIndex = 1;
             // 
-            // label2
+            // lblRoom
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(127, 114);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Room Name";
+            this.lblRoom.AutoSize = true;
+            this.lblRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoom.Location = new System.Drawing.Point(127, 114);
+            this.lblRoom.Name = "lblRoom";
+            this.lblRoom.Size = new System.Drawing.Size(158, 29);
+            this.lblRoom.TabIndex = 2;
+            this.lblRoom.Text = "Room Name";
             // 
-            // button1
+            // btnEdit
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(336, 173);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 54);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Edit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(336, 173);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(188, 54);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnCancle
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(336, 256);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(188, 54);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Cancle Room";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancle.Location = new System.Drawing.Point(336, 256);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(188, 54);
+            this.btnCancle.TabIndex = 4;
+            this.btnCancle.Text = "Cancle Room";
+            this.btnCancle.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnBack
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(132, 366);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(273, 54);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Back To Main Menu";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(132, 366);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(273, 54);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "Back To Main Menu";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // EditCancleRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.lblRoom);
             this.Controls.Add(this.listRoom);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitle);
             this.Name = "EditCancleRoom";
             this.Text = "EditCancleRoom";
             this.ResumeLayout(false);
@@ -121,11 +121,11 @@ namespace LibraryReservation
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ListBox listRoom;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblRoom;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.Button btnBack;
     }
 }

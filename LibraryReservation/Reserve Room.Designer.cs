@@ -29,25 +29,25 @@ namespace LibraryReservation
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.listPlace = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblPlace = new System.Windows.Forms.Label();
+            this.btnReserve = new System.Windows.Forms.Button();
+            this.lblDuration = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.listDuration = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(276, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 46);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Reserve Room";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(276, 38);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(298, 46);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Reserve Room";
             // 
             // listPlace
             // 
@@ -62,35 +62,36 @@ namespace LibraryReservation
             this.listPlace.TabIndex = 1;
             this.listPlace.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // label2
+            // lblPlace
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 32);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Place";
+            this.lblPlace.AutoSize = true;
+            this.lblPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlace.Location = new System.Drawing.Point(97, 118);
+            this.lblPlace.Name = "lblPlace";
+            this.lblPlace.Size = new System.Drawing.Size(92, 32);
+            this.lblPlace.TabIndex = 2;
+            this.lblPlace.Text = "Place";
             // 
-            // button1
+            // btnReserve
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(283, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(295, 43);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserve.Location = new System.Drawing.Point(283, 322);
+            this.btnReserve.Name = "btnReserve";
+            this.btnReserve.Size = new System.Drawing.Size(295, 43);
+            this.btnReserve.TabIndex = 4;
+            this.btnReserve.Text = "Reserve";
+            this.btnReserve.UseVisualStyleBackColor = true;
+            this.btnReserve.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label3
+            // lblDuration
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(645, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 32);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Duration";
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.Location = new System.Drawing.Point(645, 101);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(131, 32);
+            this.lblDuration.TabIndex = 5;
+            this.lblDuration.Text = "Duration";
             // 
             // dateTimePicker
             // 
@@ -99,15 +100,15 @@ namespace LibraryReservation
             this.dateTimePicker.Size = new System.Drawing.Size(295, 26);
             this.dateTimePicker.TabIndex = 6;
             // 
-            // label4
+            // lblDate
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(315, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(234, 32);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Select Your Day";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(315, 160);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(234, 32);
+            this.lblDate.TabIndex = 7;
+            this.lblDate.Text = "Select Your Day";
             // 
             // listDuration
             // 
@@ -133,15 +134,16 @@ namespace LibraryReservation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.listDuration);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblDuration);
+            this.Controls.Add(this.btnReserve);
+            this.Controls.Add(this.lblPlace);
             this.Controls.Add(this.listPlace);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitle);
             this.Name = "Reserve_Room";
             this.Text = "Reserve_Room";
+            this.Load += new System.EventHandler(this.Reserve_Room_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,13 +151,13 @@ namespace LibraryReservation
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ListBox listPlace;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPlace;
+        private System.Windows.Forms.Button btnReserve;
+        private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.ListBox listDuration;
     }
 }
