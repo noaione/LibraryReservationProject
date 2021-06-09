@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryReservation
 {
-    partial class ReportsForm
+    partial class frmReports
     {
         /// <summary>
         /// Required designer variable.
@@ -144,8 +144,9 @@ namespace LibraryReservation
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "Go Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // ReportsForm
+            // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +162,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblSelectRoom);
             this.Controls.Add(this.listRoom);
             this.Controls.Add(this.label1);
-            this.Name = "ReportsForm";
+            this.Name = "frmReports";
             this.Text = "Library Reservation - Reports";
             this.ResumeLayout(false);
             this.PerformLayout();

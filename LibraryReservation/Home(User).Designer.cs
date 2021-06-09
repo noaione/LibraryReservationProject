@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryReservation
 {
-    partial class User_Home
+    partial class frmUserHome
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,7 @@ namespace LibraryReservation
             // btnRsrvRoom
             // 
             this.btnRsrvRoom.Location = new System.Drawing.Point(48, 122);
-            this.btnRsrvRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRsrvRoom.Margin = new System.Windows.Forms.Padding(2);
             this.btnRsrvRoom.Name = "btnRsrvRoom";
             this.btnRsrvRoom.Size = new System.Drawing.Size(96, 30);
             this.btnRsrvRoom.TabIndex = 1;
@@ -61,24 +61,26 @@ namespace LibraryReservation
             // btnChgRsrvRoom
             // 
             this.btnChgRsrvRoom.Location = new System.Drawing.Point(48, 173);
-            this.btnChgRsrvRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChgRsrvRoom.Margin = new System.Windows.Forms.Padding(2);
             this.btnChgRsrvRoom.Name = "btnChgRsrvRoom";
             this.btnChgRsrvRoom.Size = new System.Drawing.Size(140, 30);
             this.btnChgRsrvRoom.TabIndex = 2;
             this.btnChgRsrvRoom.Text = "Change Reserved Room";
             this.btnChgRsrvRoom.UseVisualStyleBackColor = true;
+            this.btnChgRsrvRoom.Click += new System.EventHandler(this.btnChgRsrvRoom_Click);
             // 
             // btnLogOut
             // 
             this.btnLogOut.Location = new System.Drawing.Point(48, 231);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(67, 26);
             this.btnLogOut.TabIndex = 3;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // User_Home
+            // frmUserHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,8 +89,8 @@ namespace LibraryReservation
             this.Controls.Add(this.btnChgRsrvRoom);
             this.Controls.Add(this.btnRsrvRoom);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "User_Home";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "frmUserHome";
             this.Text = "Library Reservation";
             this.ResumeLayout(false);
             this.PerformLayout();

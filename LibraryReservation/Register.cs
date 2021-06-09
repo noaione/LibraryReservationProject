@@ -10,16 +10,22 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class RegisterForm : Form
+    public partial class frmRegister : Form
     {
-        public RegisterForm()
+        public frmRegister()
         {
             InitializeComponent();
         }
 
         private void lblLoginClick_Click(object sender, EventArgs e)
         {
+            new frmLogin().Show();
             this.Hide();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            //SAVE TO DB
         }
     }
 }

@@ -10,17 +10,39 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class LoginForm : Form
+    public partial class frmLogin : Form
     {
-        public LoginForm()
+        public frmLogin()
         {
             InitializeComponent();
         }
 
         private void lblRegisterClick_Click(object sender, EventArgs e)
         {
-            this.Close();
-            new RegisterForm().Show();
+            new frmRegister().Show();
+            this.Hide();
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtInUsername.Text;
+            string password = txtInPassword.Text;
+            if (username == "admin" && password == "admin")
+            {
+                new frmLibrarianHome().Show();
+                this.Hide();
+                MessageBox.Show("Hi, Admin");
+            }
+            else
+            {
+                //MATCH INPUT OF USERNAME AND PASSWORD TO DATABASE
+                //IF INPUT == TRUE ==> GO TO frmUserHome
+                //IF INPUT == FALSE ==> ASK USER TO INPUT AGAIN
+                new frmUserHome().Show();
+                this.Hide();//UNTUK SEMENTARA AJA DULU NNTI DIPASANGIN IF ELSE KE DB
+
+            }
         }
     }
 }

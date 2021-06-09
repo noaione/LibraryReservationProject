@@ -10,14 +10,26 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class Librarian_User : Form
+    public partial class frmLibrarianHome : Form
     {
-        public Librarian_User()
+        public frmLibrarianHome()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            new frmReports().Show();
+            this.Hide();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+        }
+
+        private void btnReq_Click(object sender, EventArgs e)
         {
 
         }

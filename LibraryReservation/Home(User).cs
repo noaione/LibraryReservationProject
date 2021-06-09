@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class User_Home : Form
+    public partial class frmUserHome : Form
     {
-        public User_Home()
+        public frmUserHome()
         {
             InitializeComponent();
         }
@@ -24,7 +24,27 @@ namespace LibraryReservation
 
         private void btnRsrvRoom_Click(object sender, EventArgs e)
         {
+            new frmReserveRoom().Show();
+            this.Hide();
+        }
 
+        private void btnChgRsrvRoom_Click(object sender, EventArgs e)
+        {
+            new frmEditCancleRoom().Show();
+            this.Hide();
+        }
+
+        internal class Show
+        {
+            public Show()
+            {
+            }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
         }
     }
 }

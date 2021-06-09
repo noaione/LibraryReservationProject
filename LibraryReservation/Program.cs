@@ -16,7 +16,7 @@ namespace LibraryReservation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EditCancleRoom());
+            Application.Run(new frmLogin());
         }
     }
 }

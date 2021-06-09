@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibraryReservation
 {
-    public partial class ReportsForm : Form
+    public partial class frmReports : Form
     {
-        public ReportsForm()
+        public frmReports()
         {
             InitializeComponent();
         }
@@ -20,6 +20,12 @@ namespace LibraryReservation
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmLibrarianHome().Show();
+            this.Hide();
         }
     }
 }

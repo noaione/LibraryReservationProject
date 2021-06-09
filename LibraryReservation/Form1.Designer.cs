@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryReservation
 {
-    partial class LoginForm
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -80,6 +80,7 @@ namespace LibraryReservation
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblRegisterClick
             // 
@@ -111,7 +112,7 @@ namespace LibraryReservation
             this.lblRegister.TabIndex = 9;
             this.lblRegister.Text = "Don\'t have an account?";
             // 
-            // LoginForm
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +125,7 @@ namespace LibraryReservation
             this.Controls.Add(this.txtInPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtInUsername);
-            this.Name = "LoginForm";
+            this.Name = "frmLogin";
             this.Text = "Library Reservation";
             this.ResumeLayout(false);
             this.PerformLayout();

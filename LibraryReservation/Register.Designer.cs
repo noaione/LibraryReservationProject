@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryReservation
 {
-    partial class RegisterForm
+    partial class frmRegister
     {
         /// <summary>
         /// Required designer variable.
@@ -43,10 +43,9 @@ namespace LibraryReservation
             // 
             this.lblProject.AutoSize = true;
             this.lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProject.Location = new System.Drawing.Point(43, 20);
-            this.lblProject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProject.Location = new System.Drawing.Point(32, 16);
             this.lblProject.Name = "lblProject";
-            this.lblProject.Size = new System.Drawing.Size(124, 31);
+            this.lblProject.Size = new System.Drawing.Size(100, 25);
             this.lblProject.TabIndex = 15;
             this.lblProject.Text = "Register";
             // 
@@ -54,77 +53,71 @@ namespace LibraryReservation
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblLogin.Location = new System.Drawing.Point(43, 236);
-            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogin.Location = new System.Drawing.Point(32, 192);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(174, 17);
+            this.lblLogin.Size = new System.Drawing.Size(133, 13);
             this.lblLogin.TabIndex = 14;
             this.lblLogin.Text = "Already have an Account?";
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(43, 187);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Location = new System.Drawing.Point(32, 152);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(100, 28);
+            this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Register1";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(43, 128);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPassword.Location = new System.Drawing.Point(32, 104);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(69, 17);
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 12;
             this.lblPassword.Text = "Password";
             // 
             // txtInPassword
             // 
-            this.txtInPassword.Location = new System.Drawing.Point(43, 148);
-            this.txtInPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInPassword.Location = new System.Drawing.Point(32, 120);
             this.txtInPassword.Name = "txtInPassword";
             this.txtInPassword.PasswordChar = '*';
-            this.txtInPassword.Size = new System.Drawing.Size(205, 22);
+            this.txtInPassword.Size = new System.Drawing.Size(155, 20);
             this.txtInPassword.TabIndex = 11;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(43, 69);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsername.Location = new System.Drawing.Point(32, 56);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(73, 17);
+            this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 10;
             this.lblUsername.Text = "Username";
             // 
             // txtInUsername
             // 
-            this.txtInUsername.Location = new System.Drawing.Point(43, 89);
-            this.txtInUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInUsername.Location = new System.Drawing.Point(32, 72);
             this.txtInUsername.Name = "txtInUsername";
-            this.txtInUsername.Size = new System.Drawing.Size(205, 22);
+            this.txtInUsername.Size = new System.Drawing.Size(155, 20);
             this.txtInUsername.TabIndex = 9;
             // 
             // lblLoginClick
             // 
             this.lblLoginClick.AutoSize = true;
             this.lblLoginClick.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblLoginClick.Location = new System.Drawing.Point(224, 236);
-            this.lblLoginClick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLoginClick.Location = new System.Drawing.Point(168, 192);
             this.lblLoginClick.Name = "lblLoginClick";
-            this.lblLoginClick.Size = new System.Drawing.Size(54, 17);
+            this.lblLoginClick.Size = new System.Drawing.Size(42, 13);
             this.lblLoginClick.TabIndex = 16;
             this.lblLoginClick.Text = "Sign in!";
             this.lblLoginClick.Click += new System.EventHandler(this.lblLoginClick_Click);
             // 
-            // RegisterForm
+            // frmRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 416);
+            this.ClientSize = new System.Drawing.Size(325, 338);
             this.Controls.Add(this.lblLoginClick);
             this.Controls.Add(this.lblProject);
             this.Controls.Add(this.lblLogin);
@@ -133,8 +126,7 @@ namespace LibraryReservation
             this.Controls.Add(this.txtInPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtInUsername);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "RegisterForm";
+            this.Name = "frmRegister";
             this.Text = "Library Reservation";
             this.ResumeLayout(false);
             this.PerformLayout();
