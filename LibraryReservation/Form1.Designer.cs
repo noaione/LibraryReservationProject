@@ -71,6 +71,7 @@ namespace LibraryReservation
             this.txtInPassword.PasswordChar = '*';
             this.txtInPassword.Size = new System.Drawing.Size(155, 20);
             this.txtInPassword.TabIndex = 4;
+            this.txtInPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInPassword_KeyPress);
             // 
             // btnLogin
             // 

@@ -103,6 +103,7 @@ namespace LibraryReservation
             this.txtInUsername.Name = "txtInUsername";
             this.txtInUsername.Size = new System.Drawing.Size(155, 20);
             this.txtInUsername.TabIndex = 9;
+            this.txtInUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInUsername_KeyPress);
             // 
             // lblLoginClick
             // 

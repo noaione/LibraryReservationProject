@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,6 +62,26 @@ namespace LibraryReservation
             {
                 MessageBox.Show("An unknown error occured, please try again later");
                 return;
+            }
+        }
+
+        /// <summary>
+        /// Verify if the provided username is only Alphanumerical and no space included.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtInUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return;
+            }
+            if (Regex.IsMatch(e.KeyChar.ToString(), @"[^a-z^A-Z^0-9]")) { 
+                e.Handled = true;
+            } else
+            {
+                e.Handled = false;
             }
         }
     }

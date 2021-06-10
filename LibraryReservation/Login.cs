@@ -53,5 +53,13 @@ namespace LibraryReservation
                 MessageBox.Show("Cannot find that username");
             }
         }
+
+        private void txtInPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }
