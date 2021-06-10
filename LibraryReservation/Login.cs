@@ -21,27 +21,36 @@ namespace LibraryReservation
         {
             new frmRegister().Show();
             this.Hide();
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtInUsername.Text;
             string password = txtInPassword.Text;
-            if (username == "admin" && password == "admin")
-            {
-                new frmLibrarianHome().Show();
-                this.Hide();
-                MessageBox.Show("Hi, Admin");
-            }
-            else
-            {
-                //MATCH INPUT OF USERNAME AND PASSWORD TO DATABASE
-                //IF INPUT == TRUE ==> GO TO frmUserHome
-                //IF INPUT == FALSE ==> ASK USER TO INPUT AGAIN
-                new frmUserHome().Show();
-                this.Hide();//UNTUK SEMENTARA AJA DULU NNTI DIPASANGIN IF ELSE KE DB
 
+            DatabaseBridge db = new DatabaseBridge();
+            try
+            {
+                Users realUser = db.FindUserByUsername(username);
+                if (PasswordManager.Verify(password, realUser.HashedPassword))
+                {
+                    if (realUser.Type == UserType.Librarian)
+                    {
+                        new frmLibrarianHome().Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        new frmUserHome().Show();
+                        this.Hide();
+                    }
+                } else
+                {
+                    MessageBox.Show("Invalid username and password combination");
+                }
+            } catch (UserNotFoundException)
+            {
+                MessageBox.Show("Cannot find that username");
             }
         }
     }

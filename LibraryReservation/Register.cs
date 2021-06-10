@@ -12,6 +12,7 @@ namespace LibraryReservation
 {
     public partial class frmRegister : Form
     {
+        private const int MinimumPass = 6;
         public frmRegister()
         {
             InitializeComponent();
@@ -23,9 +24,44 @@ namespace LibraryReservation
             this.Hide();
         }
 
+        // TODO: Add username verification yadayada.
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            //SAVE TO DB
+            string username = txtInUsername.Text;
+            string fullname = txtInFullName.Text;
+            string password = txtInPassword.Text;
+
+            if (password.Length < MinimumPass)
+            {
+                MessageBox.Show("Password length must be more than 6");
+                return;
+            }
+
+            string hashPassword = PasswordManager.HashPassword(password);
+            DatabaseBridge db = new DatabaseBridge();
+            try
+            {
+                Users user = new Users(fullname, username, hashPassword);
+                user = db.CreateNewUser(user);
+                if (user.Type == UserType.Librarian)
+                {
+                    new frmLibrarianHome().Show();
+                    this.Hide();
+                }
+                else
+                {
+                    new frmUserHome().Show();
+                    this.Hide();
+                }
+            } catch (UserNameAlreadyExist)
+            {
+                MessageBox.Show("Username already exist");
+                return;
+            } catch (UnknownDatabaseException)
+            {
+                MessageBox.Show("An unknown error occured, please try again later");
+                return;
+            }
         }
     }
 }

@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseBridge.cs" />
+    <Compile Include="Secrets.cs" />
     <Compile Include="EditCancleRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +69,8 @@
     <Compile Include="Home%28Librarian%29.Designer.cs">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordManager.cs" />
+    <Compile Include="Users.cs" />
     <EmbeddedResource Include="Home%28Librarian%29.resx">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </EmbeddedResource>
