@@ -52,7 +52,7 @@ namespace LibraryReservation
 
         public DatabaseBridge()
         {
-            conn = new SqlConnection(new Secrets().SQLStringConnection);
+            conn = new SqlConnection(new LibrarySecrets().SQLStringConnection);
         }
 
         public void Connect()

@@ -14,7 +14,7 @@ namespace LibraryReservation
         // It's modified to use a predefined password prefix to make it much more secure
         public static string HashPassword(string password)
         {
-            string combinedWithEntropy = new Secrets().PassEntropy + password;
+            string combinedWithEntropy = new LibrarySecrets().PassEntropy + password;
             // Create a new salt
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[Salt]);
@@ -36,7 +36,7 @@ namespace LibraryReservation
 
         public static bool Verify(string password, string hashedPass)
         {
-            string combinedWithEntropy = new Secrets().PassEntropy + password;
+            string combinedWithEntropy = new LibrarySecrets().PassEntropy + password;
             // TODO: fix this
             byte[] hashBytes = Convert.FromBase64String(hashedPass);
             byte[] salt = new byte[Salt];
