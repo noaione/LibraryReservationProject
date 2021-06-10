@@ -34,13 +34,6 @@ namespace LibraryReservation
             this.Hide();
         }
 
-        internal class Show
-        {
-            public Show()
-            {
-            }
-        }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             new frmLogin().Show();
