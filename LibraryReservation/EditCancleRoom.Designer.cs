@@ -46,7 +46,7 @@ namespace LibraryReservation
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(423, 26);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Edit / Cancle Room Reservation Room";
+            this.lblTitle.Text = "Edit / Cancel Room Reservation Room";
             // 
             // lstRoom
             // 
@@ -57,7 +57,7 @@ namespace LibraryReservation
             "Room 3",
             "Room 4"});
             this.lstRoom.Location = new System.Drawing.Point(88, 104);
-            this.lstRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstRoom.Margin = new System.Windows.Forms.Padding(2);
             this.lstRoom.Name = "lstRoom";
             this.lstRoom.Size = new System.Drawing.Size(103, 108);
             this.lstRoom.TabIndex = 1;
@@ -77,7 +77,7 @@ namespace LibraryReservation
             // 
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(224, 112);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(125, 35);
             this.btnEdit.TabIndex = 3;
@@ -89,11 +89,11 @@ namespace LibraryReservation
             // 
             this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancle.Location = new System.Drawing.Point(224, 166);
-            this.btnCancle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancle.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(125, 35);
             this.btnCancle.TabIndex = 4;
-            this.btnCancle.Text = "Cancle Room";
+            this.btnCancle.Text = "Cancel Room";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
@@ -101,7 +101,7 @@ namespace LibraryReservation
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.Location = new System.Drawing.Point(88, 238);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(182, 35);
             this.btnBack.TabIndex = 5;
@@ -120,7 +120,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblRoom);
             this.Controls.Add(this.lstRoom);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEditCancleRoom";
             this.Text = "EditCancleRoom";
             this.ResumeLayout(false);
