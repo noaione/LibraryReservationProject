@@ -1,12 +1,12 @@
 ﻿namespace LibraryReservation
 {
-    enum UserType
+    public enum UserType
     {
         Student,
         Librarian,
     }
 
-    class Users
+    public class Users
     {
         private string uuid;
         private string fullname;
