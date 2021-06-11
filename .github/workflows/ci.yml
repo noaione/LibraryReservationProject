@@ -31,13 +31,14 @@ jobs:
           Move-Item .\LibraryDatabase_log.ldf .\LibraryReservation\
 
       - name: Download Secrets
-        run: Get-Location
+        run: |
+          Invoke-WebRequest -Uri ${{ secrets.EXTRA_FILE }} -OutFile .\LibraryReservation\LibrarySecrets.cs
 
-      - name: Build and Publish Web App
+      - name: Build Release
         run: msbuild LibraryReservation.sln /p:Configuration=Release /p:Platform="Any CPU"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: published_webapp
+          name: LibraryReservation_Release
           path: bin\Release
