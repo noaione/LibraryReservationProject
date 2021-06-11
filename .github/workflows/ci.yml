@@ -25,7 +25,7 @@ jobs:
 
       - name: Download and extract database
         run: |
-          wget ${{ secrets.DATABASE_PATH }} -O db.zip
+          Invoke-WebRequest -Uri ${{ secrets.DATABASE_PATH }} -OutFile .\db.zip
           7z x db.zip
           Move-Item .\LibraryDatabase.mdf .\LibraryReservation\
           Move-Item .\LibraryDatabase_log.ldf .\LibraryReservation\
