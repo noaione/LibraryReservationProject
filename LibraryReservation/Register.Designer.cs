@@ -65,6 +65,7 @@ namespace LibraryReservation
             this.lblLogin.Size = new System.Drawing.Size(194, 20);
             this.lblLogin.TabIndex = 14;
             this.lblLogin.Text = "Already have an Account?";
+            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
             // 
             // btnRegister
             // 
@@ -113,6 +114,7 @@ namespace LibraryReservation
             this.txtInUsername.Name = "txtInUsername";
             this.txtInUsername.Size = new System.Drawing.Size(230, 26);
             this.txtInUsername.TabIndex = 9;
+            this.txtInUsername.TextChanged += new System.EventHandler(this.txtInUsername_TextChanged);
             this.txtInUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInUsername_KeyPress);
             // 
             // lblLoginClick
@@ -196,6 +198,7 @@ namespace LibraryReservation
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmRegister";
             this.Text = "Library Reservation";
+            this.Load += new System.EventHandler(this.frmRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -100,6 +100,7 @@ namespace LibraryReservation
             this.Controls.Add(this.label1);
             this.Name = "frmSeeRequest";
             this.Text = "UserRequest";
+            this.Load += new System.EventHandler(this.frmSeeRequest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

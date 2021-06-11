@@ -111,5 +111,20 @@ namespace LibraryReservation
                 txtInPassword.PasswordChar = '*';
             }
         }
+
+        private void lblLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmRegister_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

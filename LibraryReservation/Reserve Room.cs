@@ -26,12 +26,14 @@ namespace LibraryReservation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //HARUS TERPILIH SEMUA DULU BARU DI SAVE
-            //Save All Record From User To Database
+            DatabaseBridge db = new DatabaseBridge();
+            DataTable tabel = db.QueryDBAsTable("SELECT * FROM Rooms");
+            /*HARUS TERPILIH SEMUA DULU BARU DI SAVE
+            Save All Record From User To Database
             MessageBox.Show("Record Saved !!");
             new frmUserHome(user).Show();
             this.Hide();
-            //BLM KELAR
+            BLM KELAR*/
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
@@ -42,6 +44,12 @@ namespace LibraryReservation
         private void lstDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Save User Input To Database
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            new frmUserHome(user).Show();
+            this.Hide();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,12 @@ namespace LibraryReservation
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string fullname;
             string username = txtInUsername.Text;
             string password = txtInPassword.Text;
 
             DatabaseBridge db = new DatabaseBridge();
+            
             try
             {
                 Users realUser = db.FindUserByUsername(username);
@@ -36,11 +39,31 @@ namespace LibraryReservation
                 {
                     if (realUser.Type == UserType.Librarian)
                     {
+                        SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP-Project\\LibraryReservation\\LibraryDatabase.mdf; Integrated Security = True");
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("Select Fullname from Users where username ='" + username + "'", con);
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            fullname = dr.GetValue(0).ToString();
+                            MessageBox.Show("Welcome Back, " + fullname);
+                        }
+                        con.Close();
                         new frmLibrarianHome(realUser).Show();
                         this.Hide();
                     }
                     else
                     {
+                        SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP-Project\\LibraryReservation\\LibraryDatabase.mdf; Integrated Security = True");
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("Select Fullname from Users where username ='" + username + "'", con);
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            fullname = dr.GetValue(0).ToString();
+                            MessageBox.Show("Welcome Back, " + fullname);
+                        }
+                        con.Close();
                         new frmUserHome(realUser).Show();
                         this.Hide();
                     }
@@ -72,6 +95,11 @@ namespace LibraryReservation
             {
                 txtInPassword.PasswordChar = '*';
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

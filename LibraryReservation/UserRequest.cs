@@ -40,5 +40,10 @@ namespace LibraryReservation
         {
             //Delete from Database, and tell User that his/her Request has been Rejected
         }
+
+        private void frmSeeRequest_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
