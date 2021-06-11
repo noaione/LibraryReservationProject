@@ -176,6 +176,22 @@ namespace LibraryReservation
             Close();
         }
 
+        public T QuerySingleColumn<T>(string sqlCmd, int index = 0, bool dontClose = false)
+        {
+            Connect();
+            SqlCommand fetchData = new SqlCommand(sqlCmd, conn);
+            SqlDataReader reader = fetchData.ExecuteReader();
+            reader.Read();
+
+            T data = reader.GetFieldValue<T>(index);
+            reader.Close();
+            if (!dontClose)
+            {
+                Close();
+            }
+            return data;
+        }
+
         /// <summary>
         /// Count how many data in a table
         /// </summary>

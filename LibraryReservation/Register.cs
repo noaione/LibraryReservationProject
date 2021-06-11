@@ -34,7 +34,7 @@ namespace LibraryReservation
             string username = txtInUsername.Text;
             string fullname = txtInFullName.Text;
             string password = txtInPassword.Text;
-            string conpassword = txtConPassword.Text;
+            string conpassword = txtInPasswordConf.Text;
 
             if (password.Length < MinimumPass && conpassword.Length < MinimumPass)
             {
@@ -100,31 +100,20 @@ namespace LibraryReservation
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnShowHide_Click(object sender, EventArgs e)
         {
             if (txtInPassword.PasswordChar == '*')
             {
+                BtnShowHide.Image = Properties.Resources.PasswordHide;
                 txtInPassword.PasswordChar = '\0';
+                txtInPasswordConf.PasswordChar = '\0';
             }
             else
             {
+                BtnShowHide.Image = Properties.Resources.PasswordVisible;
                 txtInPassword.PasswordChar = '*';
+                txtInPasswordConf.PasswordChar = '*';
             }
-        }
-
-        private void lblLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmRegister_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtInUsername_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

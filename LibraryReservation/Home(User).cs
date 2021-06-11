@@ -45,20 +45,7 @@ namespace LibraryReservation
 
         private void frmUserHome_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            string fullname;
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP - Project\\LibraryReservation\\LibraryDatabase.mdf;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select Fullname from Users where  = '" + user);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                fullname = dr.GetValue(0).ToString();
-            }
+            lblName.Text = $"Welcome back, {user.Name}";
         }
     }
 }

@@ -26,7 +26,6 @@ namespace LibraryReservation
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string fullname;
             string username = txtInUsername.Text;
             string password = txtInPassword.Text;
 
@@ -39,31 +38,11 @@ namespace LibraryReservation
                 {
                     if (realUser.Type == UserType.Librarian)
                     {
-                        SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP-Project\\LibraryReservation\\LibraryDatabase.mdf; Integrated Security = True");
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("Select Fullname from Users where username ='" + username + "'", con);
-                        SqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            fullname = dr.GetValue(0).ToString();
-                            MessageBox.Show("Welcome Back, " + fullname);
-                        }
-                        con.Close();
                         new frmLibrarianHome(realUser).Show();
                         this.Hide();
                     }
                     else
                     {
-                        SqlConnection con = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP-Project\\LibraryReservation\\LibraryDatabase.mdf; Integrated Security = True");
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("Select Fullname from Users where username ='" + username + "'", con);
-                        SqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            fullname = dr.GetValue(0).ToString();
-                            MessageBox.Show("Welcome Back, " + fullname);
-                        }
-                        con.Close();
                         new frmUserHome(realUser).Show();
                         this.Hide();
                     }
@@ -85,21 +64,24 @@ namespace LibraryReservation
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(txtInPassword.PasswordChar == '*')
-            {
-                txtInPassword.PasswordChar = '\0';
-            }
-            else
-            {
-                txtInPassword.PasswordChar = '*';
-            }
-        }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnShowHide_Click(object sender, EventArgs e)
+        {
+            if (txtInPassword.PasswordChar == '*')
+            {
+                BtnShowHide.Image = Properties.Resources.PasswordHide;
+                txtInPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                BtnShowHide.Image = Properties.Resources.PasswordVisible;
+                txtInPassword.PasswordChar = '*';
+            }
         }
     }
 }

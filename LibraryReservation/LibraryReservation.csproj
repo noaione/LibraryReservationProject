@@ -194,6 +194,8 @@
       <DependentUpon>LibraryDatabase.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\PasswordVisible.png" />
+    <None Include="Resources\PasswordHide.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
