@@ -38,7 +38,7 @@ namespace LibraryReservation
             this.lblDate = new System.Windows.Forms.Label();
             this.lstDuration = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRoomID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -139,22 +139,22 @@ namespace LibraryReservation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label1
+            // lblRoomID
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 290);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblRoomID.AutoSize = true;
+            this.lblRoomID.Location = new System.Drawing.Point(40, 290);
+            this.lblRoomID.Name = "lblRoomID";
+            this.lblRoomID.Size = new System.Drawing.Size(51, 20);
+            this.lblRoomID.TabIndex = 10;
+            this.lblRoomID.Text = "label1";
+            this.lblRoomID.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmReserveRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRoomID);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstDuration);
             this.Controls.Add(this.lblDate);
@@ -183,6 +183,6 @@ namespace LibraryReservation
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.ListBox lstDuration;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRoomID;
     }
 }

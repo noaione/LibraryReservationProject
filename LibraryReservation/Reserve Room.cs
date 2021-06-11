@@ -34,14 +34,33 @@ namespace LibraryReservation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //DatabaseBridge db = new DatabaseBridge();
             string place, time, duration;
             place = lstPlace.Text;
             time = dateTimePicker.Text;
             duration = lstDuration.Text;
 
             
-            label1.Text = place + "\t" + time + "\t" + duration;
+            if(place == "")
+            {
+                MessageBox.Show("Please Select Your Place !!");
+                return;
+            }
+            else if(duration == "")
+            {
+                MessageBox.Show("Please Select Your Duration !!");
+                return;
+            }
+            else if (place == "" || duration == "")
+            {
+                MessageBox.Show("Please Select Your Place and Duration !!");
+                return;
+            }
+            else
+            {
+                //Save To Database
+            }
+            
+            
             
             
         }
@@ -54,17 +73,13 @@ namespace LibraryReservation
             {
                 lstPlace.Items.Add(row["Name"]);
             }
-            /*
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP - Project\\LibraryReservation\\LibraryDatabase.mdf;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select Name from Rooms", con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                lstPlace.Items.Add(dr.ToString());
-            }
-            con.Close();*/
 
+            DatabaseBridge db = new DatabaseBridge();
+            DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");
+            lstPlace.DataSource = roomsList;
+            lstPlace.DisplayMember = "Name";
+            lstPlace.ValueMember = "RoomID";
+           
         }
 
         private void lstDuration_SelectedIndexChanged(object sender, EventArgs e)
