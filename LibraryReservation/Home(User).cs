@@ -45,7 +45,13 @@ namespace LibraryReservation
 
         private void frmUserHome_Load(object sender, EventArgs e)
         {
-            lblName.Text = $"Welcome back, {user.Name}";
+            //lblName.Text = $"Welcome back, {user.Name}";
+            lblName.Text = $"{ user.Name }";
+        }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

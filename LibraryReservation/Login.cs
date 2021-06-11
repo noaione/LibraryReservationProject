@@ -38,11 +38,13 @@ namespace LibraryReservation
                 {
                     if (realUser.Type == UserType.Librarian)
                     {
+                        MessageBox.Show($"Welcome Back, {realUser.Name}");
                         new frmLibrarianHome(realUser).Show();
                         this.Hide();
                     }
                     else
                     {
+                        MessageBox.Show($"Welcome Back, {realUser.Name}");
                         new frmUserHome(realUser).Show();
                         this.Hide();
                     }
