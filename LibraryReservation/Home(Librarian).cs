@@ -19,6 +19,10 @@ namespace LibraryReservation
             user = u;
         }
 
+        public frmLibrarianHome()
+        {
+        }
+
         private void btnReport_Click(object sender, EventArgs e)
         {
             new frmReports(user).Show();
@@ -32,6 +36,12 @@ namespace LibraryReservation
         }
 
         private void btnReq_Click(object sender, EventArgs e)
+        {
+            new frmSeeRequest().Show();
+            this.Hide();
+        }
+
+        private void frmLibrarianHome_Load(object sender, EventArgs e)
         {
 
         }

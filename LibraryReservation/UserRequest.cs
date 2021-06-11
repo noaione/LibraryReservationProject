@@ -27,8 +27,13 @@ namespace LibraryReservation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //Back to Home(Librarian)
-            //gw gk bisa bkin krn gk ada Home(Librarian) dsni gatau tiba" ilang
+            new frmLibrarianHome().Show();
+            this.Hide();
+        }
+
+        private object frmLibrarianHome()
+        {
+            throw new NotImplementedException();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -29,5 +29,10 @@ namespace LibraryReservation
             new frmLibrarianHome(user).Show();
             this.Hide();
         }
+
+        private void frmReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

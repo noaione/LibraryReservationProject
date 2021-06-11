@@ -38,8 +38,17 @@ namespace LibraryReservation
             }*/
 
             //UNTUK SEMENTARA
-            new frmEditRoomReservation(user).Show();
-            this.Hide();
+            if (lstRoom.SelectedIndex == 0)
+            {
+                new frmEditRoomReservation(user).Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You Not Yet Select The Room");
+                return;
+            }
+            
             //BLM KELAR
         }
 

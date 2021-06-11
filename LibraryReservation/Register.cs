@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryReservation
+
 {
     public partial class frmRegister : Form
     {
@@ -24,18 +25,29 @@ namespace LibraryReservation
             new frmLogin().Show();
             this.Hide();
         }
-
+        
         // TODO: Add username verification yadayada.
         private void btnRegister_Click(object sender, EventArgs e)
+            
         {
+            txtInFullName.Focus();
             string username = txtInUsername.Text;
             string fullname = txtInFullName.Text;
             string password = txtInPassword.Text;
+            string conpassword = txtConPassword.Text;
 
-            if (password.Length < MinimumPass)
+            if (password.Length < MinimumPass && conpassword.Length < MinimumPass)
             {
                 MessageBox.Show("Password length must be more than 6");
                 return;
+            }
+            else
+            {
+                if(password != conpassword)
+                {
+                    MessageBox.Show("You Must Have Same Password And Confirm Password");
+                    return;
+                }
             }
 
             string hashPassword = PasswordManager.HashPassword(password);
@@ -57,7 +69,10 @@ namespace LibraryReservation
             } catch (UserNameAlreadyExist)
             {
                 MessageBox.Show("Username already exist");
+                txtInUsername.Clear();
+                txtInUsername.Focus();
                 return;
+                
             } catch (UnknownDatabaseException)
             {
                 MessageBox.Show("An unknown error occured, please try again later");
@@ -82,6 +97,18 @@ namespace LibraryReservation
             } else
             {
                 e.Handled = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtInPassword.PasswordChar == '*')
+            {
+                txtInPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtInPassword.PasswordChar = '*';
             }
         }
     }

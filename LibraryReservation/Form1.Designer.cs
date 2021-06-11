@@ -37,47 +37,53 @@ namespace LibraryReservation
             this.lblRegisterClick = new System.Windows.Forms.Label();
             this.lblProject = new System.Windows.Forms.Label();
             this.lblRegister = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtInUsername
             // 
-            this.txtInUsername.Location = new System.Drawing.Point(32, 72);
+            this.txtInUsername.Location = new System.Drawing.Point(48, 111);
+            this.txtInUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInUsername.Name = "txtInUsername";
-            this.txtInUsername.Size = new System.Drawing.Size(155, 20);
+            this.txtInUsername.Size = new System.Drawing.Size(230, 26);
             this.txtInUsername.TabIndex = 2;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(32, 56);
+            this.lblUsername.Location = new System.Drawing.Point(48, 86);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(55, 13);
+            this.lblUsername.Size = new System.Drawing.Size(83, 20);
             this.lblUsername.TabIndex = 3;
             this.lblUsername.Text = "Username";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(32, 104);
+            this.lblPassword.Location = new System.Drawing.Point(48, 160);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.Size = new System.Drawing.Size(78, 20);
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
             // txtInPassword
             // 
-            this.txtInPassword.Location = new System.Drawing.Point(32, 120);
+            this.txtInPassword.Location = new System.Drawing.Point(48, 185);
+            this.txtInPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInPassword.Name = "txtInPassword";
             this.txtInPassword.PasswordChar = '*';
-            this.txtInPassword.Size = new System.Drawing.Size(155, 20);
+            this.txtInPassword.Size = new System.Drawing.Size(230, 26);
             this.txtInPassword.TabIndex = 4;
             this.txtInPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInPassword_KeyPress);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(32, 152);
+            this.btnLogin.Location = new System.Drawing.Point(48, 234);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(112, 35);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -87,9 +93,10 @@ namespace LibraryReservation
             // 
             this.lblRegisterClick.AutoSize = true;
             this.lblRegisterClick.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRegisterClick.Location = new System.Drawing.Point(152, 192);
+            this.lblRegisterClick.Location = new System.Drawing.Point(228, 295);
+            this.lblRegisterClick.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegisterClick.Name = "lblRegisterClick";
-            this.lblRegisterClick.Size = new System.Drawing.Size(46, 13);
+            this.lblRegisterClick.Size = new System.Drawing.Size(69, 20);
             this.lblRegisterClick.TabIndex = 7;
             this.lblRegisterClick.Text = "Register";
             this.lblRegisterClick.Click += new System.EventHandler(this.lblRegisterClick_Click);
@@ -98,26 +105,40 @@ namespace LibraryReservation
             // 
             this.lblProject.AutoSize = true;
             this.lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProject.Location = new System.Drawing.Point(32, 16);
+            this.lblProject.Location = new System.Drawing.Point(48, 25);
+            this.lblProject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProject.Name = "lblProject";
-            this.lblProject.Size = new System.Drawing.Size(70, 25);
+            this.lblProject.Size = new System.Drawing.Size(101, 37);
             this.lblProject.TabIndex = 8;
             this.lblProject.Text = "Login";
             // 
             // lblRegister
             // 
             this.lblRegister.AutoSize = true;
-            this.lblRegister.Location = new System.Drawing.Point(32, 192);
+            this.lblRegister.Location = new System.Drawing.Point(48, 295);
+            this.lblRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(122, 13);
+            this.lblRegister.Size = new System.Drawing.Size(177, 20);
             this.lblRegister.TabIndex = 9;
             this.lblRegister.Text = "Don\'t have an account?";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(285, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(47, 41);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 338);
+            this.ClientSize = new System.Drawing.Size(488, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblRegister);
             this.Controls.Add(this.lblProject);
             this.Controls.Add(this.lblRegisterClick);
@@ -126,6 +147,7 @@ namespace LibraryReservation
             this.Controls.Add(this.txtInPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtInUsername);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmLogin";
             this.Text = "Library Reservation";
             this.ResumeLayout(false);
@@ -142,6 +164,7 @@ namespace LibraryReservation
         private System.Windows.Forms.Label lblRegisterClick;
         private System.Windows.Forms.Label lblProject;
         private System.Windows.Forms.Label lblRegister;
+        private System.Windows.Forms.Button button1;
     }
 }
 

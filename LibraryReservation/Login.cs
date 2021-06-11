@@ -61,5 +61,17 @@ namespace LibraryReservation
                 btnLogin_Click(sender, e);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(txtInPassword.PasswordChar == '*')
+            {
+                txtInPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtInPassword.PasswordChar = '*';
+            }
+        }
     }
 }
