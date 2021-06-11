@@ -10,7 +10,7 @@ namespace LibraryReservation
     {
         // Based on:
         // https://stackoverflow.com/a/32774750
-        static ApplicationContext MainContext = new ApplicationContext();
+        private static readonly ApplicationContext MainContext = new ApplicationContext();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
