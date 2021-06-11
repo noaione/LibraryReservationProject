@@ -36,12 +36,12 @@ namespace LibraryReservation
                 {
                     if (realUser.Type == UserType.Librarian)
                     {
-                        new frmLibrarianHome().Show();
+                        new frmLibrarianHome(realUser).Show();
                         this.Hide();
                     }
                     else
                     {
-                        new frmUserHome().Show();
+                        new frmUserHome(realUser).Show();
                         this.Hide();
                     }
                 } else

@@ -66,7 +66,7 @@ namespace LibraryReservation
             this.btnReport.TabIndex = 5;
             this.btnReport.Text = "Reports";
             this.btnReport.UseVisualStyleBackColor = true;
-            this.btnReport.Click += new System.EventHandler(this.button1_Click);
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnReq
             // 

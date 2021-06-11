@@ -46,12 +46,12 @@ namespace LibraryReservation
                 user = db.CreateNewUser(user);
                 if (user.Type == UserType.Librarian)
                 {
-                    new frmLibrarianHome().Show();
+                    new frmLibrarianHome(user).Show();
                     this.Hide();
                 }
                 else
                 {
-                    new frmUserHome().Show();
+                    new frmUserHome(user).Show();
                     this.Hide();
                 }
             } catch (UserNameAlreadyExist)

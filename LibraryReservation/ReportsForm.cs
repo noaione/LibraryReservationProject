@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmReports : Form
     {
-        public frmReports()
+        public static Users user;
+        public frmReports(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -24,7 +26,7 @@ namespace LibraryReservation
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmLibrarianHome().Show();
+            new frmLibrarianHome(user).Show();
             this.Hide();
         }
     }

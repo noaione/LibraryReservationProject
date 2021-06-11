@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmEditRoomReservation : Form
     {
-        public frmEditRoomReservation()
+        private static Users user;
+        public frmEditRoomReservation(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void EditRoomReservation_Load(object sender, EventArgs e)
@@ -24,7 +26,7 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            new frmUserHome().Show();
+            new frmUserHome(user).Show();
             this.Hide();
         }
 
@@ -32,14 +34,14 @@ namespace LibraryReservation
         {
             //Create Database For Save Change
             MessageBox.Show("Record Saved !!");
-            new frmUserHome().Show();
+            new frmUserHome(user).Show();
             this.Hide();
             //BLM KELAR
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new frmEditCancleRoom().Show();
+            new frmEditCancleRoom(user).Show();
             this.Hide();
         }
     }

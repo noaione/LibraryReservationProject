@@ -12,14 +12,16 @@ namespace LibraryReservation
 {
     public partial class frmLibrarianHome : Form
     {
-        public frmLibrarianHome()
+        public static Users user;
+        public frmLibrarianHome(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnReport_Click(object sender, EventArgs e)
         {
-            new frmReports().Show();
+            new frmReports(user).Show();
             this.Hide();
         }
 

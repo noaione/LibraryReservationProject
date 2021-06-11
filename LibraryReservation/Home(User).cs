@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmUserHome : Form
     {
-        public frmUserHome()
+        public static Users user;
+        public frmUserHome(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -24,13 +26,13 @@ namespace LibraryReservation
 
         private void btnRsrvRoom_Click(object sender, EventArgs e)
         {
-            new frmReserveRoom().Show();
+            new frmReserveRoom(user).Show();
             this.Hide();
         }
 
         private void btnChgRsrvRoom_Click(object sender, EventArgs e)
         {
-            new frmEditCancleRoom().Show();
+            new frmEditCancleRoom(user).Show();
             this.Hide();
         }
 

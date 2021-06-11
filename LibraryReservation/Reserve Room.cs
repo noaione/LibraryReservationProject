@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmReserveRoom : Form
     {
-        public frmReserveRoom()
+        private static Users user;
+        public frmReserveRoom(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace LibraryReservation
             //HARUS TERPILIH SEMUA DULU BARU DI SAVE
             //Save All Record From User To Database
             MessageBox.Show("Record Saved !!");
-            new frmUserHome().Show();
+            new frmUserHome(user).Show();
             this.Hide();
             //BLM KELAR
         }

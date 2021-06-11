@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmEditCancleRoom : Form
     {
-        public frmEditCancleRoom()
+        private static Users user;
+        public frmEditCancleRoom(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -36,14 +38,14 @@ namespace LibraryReservation
             }*/
 
             //UNTUK SEMENTARA
-            new frmEditRoomReservation().Show();
+            new frmEditRoomReservation(user).Show();
             this.Hide();
             //BLM KELAR
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmUserHome().Show();
+            new frmUserHome(user).Show();
             this.Hide();
         }
 
@@ -51,7 +53,7 @@ namespace LibraryReservation
         {
             //HARUS ADA DIPILIH DULU ROOMNYA TRUS BISA DI CANCLE, KALAU TIDAK DIA MINTA ULANG U/DI PILIH
             MessageBox.Show("The Room Have Been Cancled"); // DELETE FROM DB
-            new frmUserHome().Show();
+            new frmUserHome(user).Show();
             this.Hide();
             //BLM KELAR
         }
