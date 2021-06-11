@@ -26,23 +26,20 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             //Create Database For Save Change
             MessageBox.Show("Record Saved !!");
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
             //BLM KELAR
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new frmEditCancleRoom(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmEditCancleRoom(user), this);
         }
     }
 }

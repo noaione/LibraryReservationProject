@@ -22,8 +22,7 @@ namespace LibraryReservation
 
         private void lblLoginClick_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmLogin(), this);
         }
         
         // TODO: Add username verification yadayada.
@@ -58,13 +57,11 @@ namespace LibraryReservation
                 user = db.CreateNewUser(user);
                 if (user.Type == UserType.Librarian)
                 {
-                    new frmLibrarianHome(user).Show();
-                    this.Hide();
+                    Program.ReplaceForm(new frmLibrarianHome(user), this);
                 }
                 else
                 {
-                    new frmUserHome(user).Show();
-                    this.Hide();
+                    Program.ReplaceForm(new frmUserHome(user), this);
                 }
             } catch (UserNameAlreadyExist)
             {

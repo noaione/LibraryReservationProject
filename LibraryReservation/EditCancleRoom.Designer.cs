@@ -123,6 +123,7 @@ namespace LibraryReservation
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEditCancleRoom";
             this.Text = "EditCancleRoom";
+            this.Load += new System.EventHandler(this.frmEditCancleRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

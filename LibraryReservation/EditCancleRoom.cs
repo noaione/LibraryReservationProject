@@ -40,8 +40,7 @@ namespace LibraryReservation
             //UNTUK SEMENTARA
             if (lstRoom.SelectedIndex == 0)
             {
-                new frmEditRoomReservation(user).Show();
-                this.Hide();
+                Program.ReplaceForm(new frmEditRoomReservation(user), this);
             }
             else
             {
@@ -54,17 +53,20 @@ namespace LibraryReservation
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
             //HARUS ADA DIPILIH DULU ROOMNYA TRUS BISA DI CANCLE, KALAU TIDAK DIA MINTA ULANG U/DI PILIH
             MessageBox.Show("The Room Have Been Cancled"); // DELETE FROM DB
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
             //BLM KELAR
+        }
+
+        private void frmEditCancleRoom_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

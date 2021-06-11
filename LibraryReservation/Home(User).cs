@@ -27,20 +27,17 @@ namespace LibraryReservation
 
         private void btnRsrvRoom_Click(object sender, EventArgs e)
         {
-            new frmReserveRoom(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmReserveRoom(user), this);
         }
 
         private void btnChgRsrvRoom_Click(object sender, EventArgs e)
         {
-            new frmEditCancleRoom(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmEditCancleRoom(user), this);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmLogin(), this);
         }
 
         private void frmUserHome_Load(object sender, EventArgs e)

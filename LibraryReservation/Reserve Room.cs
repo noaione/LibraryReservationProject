@@ -20,16 +20,15 @@ namespace LibraryReservation
             user = u;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstPlace_SelectedIndexChange(object sender, EventArgs e)
         {
-            
-            /*
-            DatabaseBridge db = new DatabaseBridge();
-            try
-            {
-                Rooms realRoom = db.FindUserByUsername(user);
-            }*/
+            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
+            string roomId = sel["RoomID"].ToString();
+            string roomName = sel["Name"].ToString();
+            string roomLocation = sel["Location"].ToString();
+            string capacity = sel["Capacity"].ToString();
 
+            lblDebug.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,31 +39,16 @@ namespace LibraryReservation
             time = dateTimePicker.Text;
             duration = lstDuration.Text;
 
-            
-            label1.Text = place + "\t" + time + "\t" + duration;
-            
-            
+            lblDebug.Text = place + "\t" + time + "\t" + duration;            
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
         {
             DatabaseBridge db = new DatabaseBridge();
-            DataTable roomsList = db.QueryDBAsTable("SELECT Name FROM Rooms");
-            foreach (DataRow row in roomsList.Rows)
-            {
-                lstPlace.Items.Add(row["Name"]);
-            }
-            /*
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=E:\\APU\\Semester 2\\Introduce To Oriented Object Programming\\IOOP - Project\\LibraryReservation\\LibraryDatabase.mdf;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select Name from Rooms", con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                lstPlace.Items.Add(dr.ToString());
-            }
-            con.Close();*/
-
+            DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");
+            lstPlace.DataSource = roomsList;
+            lstPlace.DisplayMember = "Name";
+            lstPlace.ValueMember = "RoomID";
         }
 
         private void lstDuration_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,8 +58,7 @@ namespace LibraryReservation
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void label1_Click(object sender, EventArgs e)
