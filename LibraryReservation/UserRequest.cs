@@ -12,9 +12,11 @@ namespace LibraryReservation
 {
     public partial class frmSeeRequest : Form
     {
-        public frmSeeRequest()
+        private static Users user;
+        public frmSeeRequest(Users u)
         {
             InitializeComponent();
+            user = u;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,8 +29,7 @@ namespace LibraryReservation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new frmLibrarianHome().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmLibrarianHome(user), this);
         }
 
         private object frmLibrarianHome()

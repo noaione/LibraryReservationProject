@@ -60,7 +60,7 @@ namespace LibraryReservation
         /// <summary>
         /// An exception occured while trying to do something with the database
         /// </summary>
-        /// <param name="reasoning">The reason it failed</param>
+        /// <param name="reasoning">The reason it failed</par   am>
         public UnknownDatabaseException(string reasoning)
             : base(String.Format("A failure occured when trying to query/commit to database: {0}", reasoning))
         {

@@ -20,47 +20,30 @@ namespace LibraryReservation
             user = u;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstPlace_SelectedIndexChange(object sender, EventArgs e)
         {
-            
-            /*
-            DatabaseBridge db = new DatabaseBridge();
-            try
-            {
-                Rooms realRoom = db.FindUserByUsername(user);
-            }*/
+            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
+            string roomId = sel["RoomID"].ToString();
+            string roomName = sel["Name"].ToString();
+            string roomLocation = sel["Location"].ToString();
+            string capacity = sel["Capacity"].ToString();
 
+            lblDebug.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string place, time, duration;
+            //int time;
             place = lstPlace.Text;
             time = dateTimePicker.Text;
             duration = lstDuration.Text;
 
+            DatabaseBridge db = new DatabaseBridge();
             
-            if(place == "")
-            {
-                MessageBox.Show("Please Select Your Place !!");
-                return;
-            }
-            else if(duration == "")
-            {
-                MessageBox.Show("Please Select Your Duration !!");
-                return;
-            }
-            else if (place == "" || duration == "")
-            {
-                MessageBox.Show("Please Select Your Place and Duration !!");
-                return;
-            }
-            else
-            {
-                //Save To Database
-            }
+
             
-            
+            //label1.Text = place + "\t" + time + "\t" + duration;
             
             
         }
@@ -73,12 +56,13 @@ namespace LibraryReservation
             {
                 lstPlace.Items.Add(row["Name"]);
             }
-
-            DatabaseBridge db = new DatabaseBridge();
+            /*
+            DatabaseBridge databaseBridge = new DatabaseBridge();
+            DatabaseBridge db = databaseBridge;
             DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");
             lstPlace.DataSource = roomsList;
             lstPlace.DisplayMember = "Name";
-            lstPlace.ValueMember = "RoomID";
+            lstPlace.ValueMember = "RoomID";*/
            
         }
 
@@ -89,8 +73,7 @@ namespace LibraryReservation
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            new frmUserHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void label1_Click(object sender, EventArgs e)

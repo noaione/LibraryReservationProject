@@ -33,6 +33,7 @@ namespace LibraryReservation
         private string name;
         private int capacity;
         private string location;
+        internal static object roomId;
 
         public string RoomID { get => roomID; set => roomID = value; }
         public string Name { get => name; set => name = value; }

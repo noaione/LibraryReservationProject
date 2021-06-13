@@ -26,8 +26,7 @@ namespace LibraryReservation
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new frmLibrarianHome(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmLibrarianHome(user), this);
         }
 
         private void frmReports_Load(object sender, EventArgs e)

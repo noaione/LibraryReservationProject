@@ -20,8 +20,7 @@ namespace LibraryReservation
 
         private void lblRegisterClick_Click(object sender, EventArgs e)
         {
-            new frmRegister().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmRegister(), this);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -39,14 +38,12 @@ namespace LibraryReservation
                     if (realUser.Type == UserType.Librarian)
                     {
                         MessageBox.Show($"Welcome Back, {realUser.Name}");
-                        new frmLibrarianHome(realUser).Show();
-                        this.Hide();
+                        Program.ReplaceForm(new frmLibrarianHome(realUser), this);
                     }
                     else
                     {
                         MessageBox.Show($"Welcome Back, {realUser.Name}");
-                        new frmUserHome(realUser).Show();
-                        this.Hide();
+                        Program.ReplaceForm(new frmUserHome(realUser), this);
                     }
                 } else
                 {

@@ -25,20 +25,17 @@ namespace LibraryReservation
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            new frmReports(user).Show();
-            this.Hide();
+            Program.ReplaceForm(new frmReports(user), this);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            new frmLogin().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmLogin(), this);
         }
 
         private void btnReq_Click(object sender, EventArgs e)
         {
-            new frmSeeRequest().Show();
-            this.Hide();
+            Program.ReplaceForm(new frmSeeRequest(user), this);
         }
 
         private void frmLibrarianHome_Load(object sender, EventArgs e)
