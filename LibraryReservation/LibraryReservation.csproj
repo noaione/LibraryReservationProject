@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="LibrarySecrets.cs" />
     <Compile Include="PasswordManager.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="Rooms.cs" />
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="Home%28Librarian%29.resx">

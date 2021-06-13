@@ -28,41 +28,41 @@ namespace LibraryReservation
             string roomLocation = sel["Location"].ToString();
             string capacity = sel["Capacity"].ToString();
 
-            lblDebug.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
+            lblRoomID.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string place, time, duration;
-            //int time;
+            string place,time,duration;
             place = lstPlace.Text;
             time = dateTimePicker.Text;
             duration = lstDuration.Text;
-
+            
             DatabaseBridge db = new DatabaseBridge();
-            
+            //BAWAH MASIH SALAH MAU DI ROMBAK
+            //Reservation reservation = new Reservation(place, time, duration);
 
-            
+
             //label1.Text = place + "\t" + time + "\t" + duration;
-            
-            
+
+
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
         {
-            DatabaseBridge db = new DatabaseBridge();
-            DataTable roomsList = db.QueryDBAsTable("SELECT Name FROM Rooms");
-            foreach (DataRow row in roomsList.Rows)
-            {
-                lstPlace.Items.Add(row["Name"]);
-            }
-            /*
+            //DatabaseBridge db = new DatabaseBridge();
+            //DataTable roomsList = db.QueryDBAsTable("SELECT Name FROM Rooms");
+            //foreach (DataRow row in roomsList.Rows)
+            //{
+            //    lstPlace.Items.Add(row["Name"]);
+            //}
+            
             DatabaseBridge databaseBridge = new DatabaseBridge();
             DatabaseBridge db = databaseBridge;
             DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");
             lstPlace.DataSource = roomsList;
             lstPlace.DisplayMember = "Name";
-            lstPlace.ValueMember = "RoomID";*/
+            lstPlace.ValueMember = "RoomID";
            
         }
 
