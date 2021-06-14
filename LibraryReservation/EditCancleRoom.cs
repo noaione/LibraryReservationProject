@@ -40,6 +40,8 @@ namespace LibraryReservation
             //UNTUK SEMENTARA
             if (lstRoom.SelectedIndex == 0)
             {
+                DataRowView sel = (DataRowView)lstRoom.SelectedItem;
+                //string a = sel;
                 Program.ReplaceForm(new frmEditRoomReservation(user), this);
             }
             else
