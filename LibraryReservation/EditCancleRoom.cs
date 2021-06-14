@@ -66,7 +66,15 @@ namespace LibraryReservation
 
         private void frmEditCancleRoom_Load(object sender, EventArgs e)
         {
+            string userid;
+            userid = $"{ user.UserID }";
 
+            DatabaseBridge db = new DatabaseBridge();
+            DataTable roomList = db.QueryDBAsTable("select RoomID Reservations where UserID = '" + userid + "'");
+            foreach(DataRow row in roomList.Rows)
+            {
+                lstRoom.Items.Add(row["RoomID"]);
+            }
         }
 
         private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)

@@ -32,6 +32,8 @@ namespace LibraryReservation
 
 
         public string ReserveID { get => rrid; set => rrid = value; }
+        // push dulu deh, nanti tak beresin 
+        // bntr Ada maU tak liatin
         public string UserID { get => UserID; set => UserID = value; }
         public string RoomID { get => RoomID; set => RoomID = value; }
         public string DateTime { get => DateTime; set => DateTime = value; }

@@ -33,12 +33,30 @@ namespace LibraryReservation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string place,time,duration;
-            place = lstPlace.Text;
-            time = dateTimePicker.Text;
+
+            string time, duration, userid;
+            time = dateTimePicker.Value.ToString();
             duration = lstDuration.Text;
-            
+            userid = $"{ user.UserID }";
+
             DatabaseBridge db = new DatabaseBridge();
+            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
+            string placename = sel["RoomID"].ToString();
+            lblUserID.Text = placename;
+            string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+            Reservation reserve = new Reservation(reserverid, userid, placename, time, duration);
+            db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTime}', '{reserve.Duration}')");
+            //coba run dlu yak?
+            //bentar
+            
+            
+
+            //DataTable placename = db.QueryDBAsTable("SELECT RoomID from Rooms where name ='" + place + "'");
+            //lblUserID.Text = placename + "";
+            //Reservation reservations = new Reservation(userid,place,time,duration);
+
+
+
             //BAWAH MASIH SALAH MAU DI ROMBAK
             //Reservation reservation = new Reservation(place, time, duration);
 
@@ -56,6 +74,7 @@ namespace LibraryReservation
             //{
             //    lstPlace.Items.Add(row["Name"]);
             //}
+            
             
             DatabaseBridge databaseBridge = new DatabaseBridge();
             DatabaseBridge db = databaseBridge;
@@ -79,6 +98,11 @@ namespace LibraryReservation
         private void label1_Click(object sender, EventArgs e)
         { 
             
+        }
+
+        private void lblUserID_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,6 +39,7 @@ namespace LibraryReservation
             this.lstDuration = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblRoomID = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -150,11 +151,22 @@ namespace LibraryReservation
             this.lblRoomID.Text = "label1";
             this.lblRoomID.Click += new System.EventHandler(this.label1_Click);
             // 
+            // lblUserID
+            // 
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Location = new System.Drawing.Point(247, 470);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(51, 20);
+            this.lblUserID.TabIndex = 11;
+            this.lblUserID.Text = "label1";
+            this.lblUserID.Click += new System.EventHandler(this.lblUserID_Click);
+            // 
             // frmReserveRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 691);
+            this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.lblRoomID);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstDuration);
@@ -185,5 +197,6 @@ namespace LibraryReservation
         private System.Windows.Forms.ListBox lstDuration;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblRoomID;
+        private System.Windows.Forms.Label lblUserID;
     }
 }
