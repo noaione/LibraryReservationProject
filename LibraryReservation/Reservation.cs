@@ -11,30 +11,22 @@ namespace LibraryReservation
         private string rrid;
         private Users user;
         private Rooms room;
-        private string datetime;
-        private string duration;
-        public Reservation(string rrid, Users user, Rooms room, string datetime, string duration)
+        private DateTime datetime;
+        private int duration;
+        public Reservation(string rrid, Users user, Rooms room, DateTime datetime, int duration)
         {
-            rrid = rrid;
-            user = user;
-            room = room;
-            datetime = datetime;
-            duration = duration;
-        }
-        public Reservation(string rrid, string user, string room, string datetime, string duration)
-        {
-            rrid = "unknown";
-            user = "unknown";
-            room = "unknown";
+            this.rrid = rrid;
+            this.user = user;
+            this.room = room;
             this.datetime = datetime;
             this.duration = duration;
         }
 
-
         public string ReserveID { get => rrid; set => rrid = value; }
-        public string UserID { get => UserID; set => UserID = value; }
-        public string RoomID { get => RoomID; set => RoomID = value; }
-        public string DateTime { get => DateTime; set => DateTime = value; }
-        public string Duration { get => Duration; set => Duration = value; }
+        public string UserID { get => user.UserID; }
+        public string RoomID { get => room.RoomID; }
+        public DateTime DateTime { get => datetime; set => datetime = value; }
+        public string DateTimeSQL { get => datetime.ToString("s"); }
+        public int Duration { get => duration; set => duration = value; }
     }
 }

@@ -31,50 +31,36 @@ namespace LibraryReservation
             lblRoomID.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnReserve_Click(object sender, EventArgs e)
         {
 
-            string time, duration, userid;
-            time = dateTimePicker.Value.ToString();
-            duration = lstDuration.Text;
-            userid = $"{ user.UserID }";
+            DateTime time = dateTimePicker.Value;
+            int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
 
             DatabaseBridge db = new DatabaseBridge();
             DataRowView sel = (DataRowView)lstPlace.SelectedItem;
-            string placename = sel["RoomID"].ToString();
-            lblUserID.Text = placename;
             string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-            Reservation reserve = new Reservation(reserverid, userid, placename, time, duration);
-            db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTime}', '{reserve.Duration}')");
-            //coba run dlu yak?
-            //bentar
-            
-            
+            Rooms reserveRoom = new Rooms(sel["RoomID"].ToString(), sel["Name"].ToString(), int.Parse(sel["Capacity"].ToString()), sel["Location"].ToString());
+            Reservation reserve = new Reservation(reserverid, user, reserveRoom, time, duration);
 
-            //DataTable placename = db.QueryDBAsTable("SELECT RoomID from Rooms where name ='" + place + "'");
-            //lblUserID.Text = placename + "";
-            //Reservation reservations = new Reservation(userid,place,time,duration);
+            Reservation anyRoom = db.ReservationConflictCheck(reserve);
+            if (anyRoom != null)
+            {
+                MessageBox.Show("Sorry, there's already another person booking this");
+                // Show extra info
+                return;
+            }
+            db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTimeSQL}', '{reserve.Duration}')");
 
-
-
-            //BAWAH MASIH SALAH MAU DI ROMBAK
-            //Reservation reservation = new Reservation(place, time, duration);
-
-
-            //label1.Text = place + "\t" + time + "\t" + duration;
-
-
+            MessageBox.Show("Your room is now reserved!");
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
         {
-            //DatabaseBridge db = new DatabaseBridge();
-            //DataTable roomsList = db.QueryDBAsTable("SELECT Name FROM Rooms");
-            //foreach (DataRow row in roomsList.Rows)
-            //{
-            //    lstPlace.Items.Add(row["Name"]);
-            //}
-            
+            // Custom datepicker formatting
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "ddd, dd MMM yyyy HH:mm";
             
             DatabaseBridge databaseBridge = new DatabaseBridge();
             DatabaseBridge db = databaseBridge;

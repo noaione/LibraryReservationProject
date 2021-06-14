@@ -10,14 +10,14 @@ namespace LibraryReservation
     {
         private string rmid;
         private string roomName;
-        private string roomCapacity;
+        private int roomCapacity;
         private string roomLocation;
 
-        public Rooms(string rmid, string roomName, int roomCapacity, string roomLocaiton)
+        public Rooms(string rmid, string roomName, int roomCapacity, string roomLocation)
         {
             this.rmid = rmid;
             this.roomName = roomName;
-            roomCapacity = roomCapacity;
+            this.roomCapacity = roomCapacity;
             this.roomLocation = roomLocation;
         }
 
@@ -25,19 +25,13 @@ namespace LibraryReservation
         {
             rmid = "unknown";
             this.roomName = roomName;
-            roomCapacity = roomCapacity;
+            this.roomCapacity = roomCapacity;
             this.roomLocation = roomLocation;
         }
 
-        private string roomID;
-        private string name;
-        private int capacity;
-        private string location;
-        internal static object roomId;
-
-        public string RoomID { get => roomID; set => roomID = value; }
-        public string Name { get => name; set => name = value; }
-        public int Capacity { get => capacity; set => capacity = value; }
-        public string Location { get => location; set => location = value; }
+        public string RoomID { get => rmid; set => rmid = value; }
+        public string Name { get => roomName; set => roomName = value; }
+        public int Capacity { get => roomCapacity; set => roomCapacity = value; }
+        public string Location { get => roomLocation; set => roomLocation = value; }
     }
 }
