@@ -31,7 +31,26 @@ namespace LibraryReservation
 
         private void frmReports_Load(object sender, EventArgs e)
         {
+            DatabaseBridge databaseBridge = new DatabaseBridge();
+            DatabaseBridge db = databaseBridge;
+            DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");
+            lstRoom.DataSource = roomsList;
+            lstRoom.DisplayMember = "Name";
+            lstRoom.ValueMember = "RoomID";
+        }
 
+        private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+            DataRowView sel = (DataRowView)lstRoom.SelectedItem;
+            DatabaseBridge databasebridge = new DatabaseBridge();
+            DatabaseBridge db = databasebridge;
+            DataTable reservationList = db.QueryDBAsTable($"SELECT ReserveID FROM Reservations WHERE RoomID = '{sel}'");
+            string roomId = sel["RoomID"].ToString();
+            string roomName = sel["Capacity"].ToString();
+
+            lblDTotal.Text = $"Debug:\nID: {roomId}\nName: {roomName}";*/
+            //Belum Yg Bawah List(Daily Repoty) & Monthly Report
         }
     }
 }

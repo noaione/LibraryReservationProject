@@ -13,6 +13,7 @@ namespace LibraryReservation
     public partial class frmEditRoomReservation : Form
     {
         private static Users user;
+        private static Rooms room;
         public frmEditRoomReservation(Users u)
         {
             InitializeComponent();

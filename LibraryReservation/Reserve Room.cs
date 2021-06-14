@@ -31,50 +31,54 @@ namespace LibraryReservation
             lblRoomID.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnReserve_Click(object sender, EventArgs e)
         {
+            if (lstPlace.SelectedIndex == 0 && lstDuration.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please Select Place And Duration !!");
+                return;
+            }
+            else if (lstPlace.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please Select Your Place !!");
+                return;
+            }
+            else if (lstDuration.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please Select The Duration !!");
+                return;
+            }
+            else
+            {
+                DateTime time = dateTimePicker.Value;
+                int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
 
-            string time, duration, userid;
-            time = dateTimePicker.Value.ToString();
-            duration = lstDuration.Text;
-            userid = $"{ user.UserID }";
+                DatabaseBridge db = new DatabaseBridge();
+                DataRowView sel = (DataRowView)lstPlace.SelectedItem;
+                string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+                Rooms reserveRoom = new Rooms(sel["RoomID"].ToString(), sel["Name"].ToString(), int.Parse(sel["Capacity"].ToString()), sel["Location"].ToString());
+                Reservation reserve = new Reservation(reserverid, user, reserveRoom, time, duration);
 
-            DatabaseBridge db = new DatabaseBridge();
-            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
-            string placename = sel["RoomID"].ToString();
-            lblUserID.Text = placename;
-            string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-            Reservation reserve = new Reservation(reserverid, userid, placename, time, duration);
-            db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTime}', '{reserve.Duration}')");
-            //coba run dlu yak?
-            //bentar
+                Reservation anyRoom = db.ReservationConflictCheck(reserve);
+                if (anyRoom != null)
+                {
+                    MessageBox.Show("Sorry, there's already another person booking this");
+                    // Show extra info
+                    return;
+                }
+                db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTimeSQL}', '{reserve.Duration}')");
+
+                MessageBox.Show("Your room is now reserved!");
+                Program.ReplaceForm(new frmUserHome(user), this);
+            }
             
-            
-
-            //DataTable placename = db.QueryDBAsTable("SELECT RoomID from Rooms where name ='" + place + "'");
-            //lblUserID.Text = placename + "";
-            //Reservation reservations = new Reservation(userid,place,time,duration);
-
-
-
-            //BAWAH MASIH SALAH MAU DI ROMBAK
-            //Reservation reservation = new Reservation(place, time, duration);
-
-
-            //label1.Text = place + "\t" + time + "\t" + duration;
-
-
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
         {
-            //DatabaseBridge db = new DatabaseBridge();
-            //DataTable roomsList = db.QueryDBAsTable("SELECT Name FROM Rooms");
-            //foreach (DataRow row in roomsList.Rows)
-            //{
-            //    lstPlace.Items.Add(row["Name"]);
-            //}
-            
+            // Custom datepicker formatting
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "ddd, dd MMM yyyy HH:mm";
             
             DatabaseBridge databaseBridge = new DatabaseBridge();
             DatabaseBridge db = databaseBridge;
@@ -87,7 +91,10 @@ namespace LibraryReservation
 
         private void lstDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Save User Input To Database
+            //DataRowView sel = (DataRowView)lstDuration.SelectedItem;
+            string sel = lstDuration.SelectedItem.ToString();
+            string duration = sel.ToString();
+            lblMinutes.Text = "Duration :" + duration;
         }
 
         private void button1_Click_1(object sender, EventArgs e)

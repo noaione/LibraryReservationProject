@@ -39,7 +39,7 @@ namespace LibraryReservation
             this.lstDuration = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblRoomID = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
+            this.lblMinutes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -81,7 +81,7 @@ namespace LibraryReservation
             this.btnReserve.TabIndex = 4;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = true;
-            this.btnReserve.Click += new System.EventHandler(this.button1_Click);
+            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
             // 
             // lblDuration
             // 
@@ -95,6 +95,7 @@ namespace LibraryReservation
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker.Location = new System.Drawing.Point(284, 215);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(295, 26);
@@ -132,7 +133,7 @@ namespace LibraryReservation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(548, 407);
+            this.button1.Location = new System.Drawing.Point(548, 408);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(284, 45);
             this.button1.TabIndex = 9;
@@ -146,27 +147,25 @@ namespace LibraryReservation
             this.lblRoomID.Location = new System.Drawing.Point(60, 446);
             this.lblRoomID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomID.Name = "lblRoomID";
-            this.lblRoomID.Size = new System.Drawing.Size(51, 20);
+            this.lblRoomID.Size = new System.Drawing.Size(0, 20);
             this.lblRoomID.TabIndex = 10;
-            this.lblRoomID.Text = "label1";
             this.lblRoomID.Click += new System.EventHandler(this.label1_Click);
             // 
-            // lblUserID
+            // lblMinutes
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Location = new System.Drawing.Point(247, 470);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(51, 20);
-            this.lblUserID.TabIndex = 11;
-            this.lblUserID.Text = "label1";
-            this.lblUserID.Click += new System.EventHandler(this.lblUserID_Click);
+            this.lblMinutes.AutoSize = true;
+            this.lblMinutes.Location = new System.Drawing.Point(60, 546);
+            this.lblMinutes.Name = "lblMinutes";
+            this.lblMinutes.Size = new System.Drawing.Size(0, 20);
+            this.lblMinutes.TabIndex = 11;
+            this.lblMinutes.Click += new System.EventHandler(this.lblUserID_Click);
             // 
             // frmReserveRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 691);
-            this.Controls.Add(this.lblUserID);
+            this.Controls.Add(this.lblMinutes);
             this.Controls.Add(this.lblRoomID);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstDuration);
@@ -197,6 +196,6 @@ namespace LibraryReservation
         private System.Windows.Forms.ListBox lstDuration;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblRoomID;
-        private System.Windows.Forms.Label lblUserID;
+        private System.Windows.Forms.Label lblMinutes;
     }
 }

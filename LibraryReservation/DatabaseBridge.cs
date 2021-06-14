@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace LibraryReservation
 {
@@ -21,6 +22,26 @@ namespace LibraryReservation
         /// <param name="name">The username itself</param>
         public UserNotFoundException(string name)
             : base(String.Format("Failed to find User with data of: {0}", name))
+        {
+
+        }
+    }
+    class RoomNotFoundException : Exception
+    {
+        /// <summary>
+        /// An exception when the provided RoomID cannot be found on database
+        /// </summary>
+        public RoomNotFoundException()
+        {
+
+        }
+
+        /// <summary>
+        /// An exception when the provided RoomID cannot be found on database
+        /// </summary>
+        /// <param name="roomid">The room ID itself</param>
+        public RoomNotFoundException(string roomid)
+            : base(String.Format("Failed to find Room with data of: {0}", roomid))
         {
 
         }
@@ -240,7 +261,7 @@ namespace LibraryReservation
         /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
         public Users FindUserByUsername(string username)
         {
-            int count = CountTable("Users", string.Format("where Username='{0}'", username), true);
+            int count = CountTable("Users", string.Format("WHERE UserName='{0}'", username), true);
             if (count < 1)
             {
                 throw new UserNotFoundException(username);
@@ -269,6 +290,73 @@ namespace LibraryReservation
             throw new UserNotFoundException(username);
         }
 
+        /// <summary>
+        /// Find a user from Users database by the username
+        /// </summary>
+        /// <param name="username">The username to be searched on</param>
+        /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
+        /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
+        public Users FindUserByID(int userId)
+        {
+            int count = CountTable("Users", $"WHERE UserID={userId}", true);
+            if (count < 1)
+            {
+                throw new UserNotFoundException($"UUID: {userId}");
+            }
+
+            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Users WHERE UserID = {0}", userId));
+
+            foreach (DataRow row in table.Rows)
+            {
+                string uuid = row["UserID"].ToString();
+                string uname = row["UserName"].ToString();
+                string fullname = row["FullName"].ToString();
+                string hashpass = row["HashedPassword"].ToString();
+                string type = row["Type"].ToString();
+                UserType mapType;
+                if (type == "admin")
+                {
+                    mapType = UserType.Librarian;
+                }
+                else
+                {
+                    mapType = UserType.Student;
+                }
+                Users udata = new Users(uuid, fullname, uname, hashpass, mapType);
+                return udata;
+            }
+            throw new UserNotFoundException($"UUID: {userId}");
+        }
+
+        /// <summary>
+        /// Find a user from Users database by the username
+        /// </summary>
+        /// <param name="username">The username to be searched on</param>
+        /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
+        /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
+        public Rooms FindRoomByID(string roomID)
+        {
+            // FIXME: broken
+            int count = CountTable("Rooms", string.Format("where UserID='{0}'", roomID), true);
+            if (count < 1)
+            {
+                throw new RoomNotFoundException(roomID);
+            }
+
+            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Rooms WHERE RoomID='{0}'", roomID));
+
+            foreach (DataRow row in table.Rows)
+            {
+                string ruuid = row["RoomID"].ToString();
+                string rname = row["Name"].ToString();
+                int rsize = int.Parse(row["Capacity"].ToString());
+                string rlocation = row["Location"].ToString();
+
+                Rooms room = new Rooms(ruuid, rname, rsize, rlocation);
+                return room;
+            }
+            throw new RoomNotFoundException(roomID);
+        }
         /// <summary>
         /// Create a new Users records
         /// </summary>
@@ -301,6 +389,39 @@ namespace LibraryReservation
                 Close();
                 throw new UnknownDatabaseException("Failed to insert new user to database");
             }
+        }
+
+        public Reservation ReservationConflictCheck(Reservation newReservation)
+        {
+            string today = newReservation.DateTime.ToString("yyyy-MM-dd");
+            DataTable dataReserved = QueryDBAsTable($"SELECT * FROM Reservations WHERE RoomID = '{newReservation.RoomID}' AND DateTime > '{today} 00:00:00'");
+
+            Reservation conflict = null;
+            foreach (DataRow data in dataReserved.Rows)
+            {
+                int duration = int.Parse(data["Duration"].ToString());
+                Users rUser = FindUserByID(int.Parse(data["UserID"].ToString()));
+                Rooms rRoom = FindRoomByID(data["RoomID"].ToString());
+                DateTime startRange = DateTime.Parse(data["DateTime"].ToString());
+                DateTime endRange = startRange.AddMinutes(duration);
+
+                DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);
+
+                long start1 = ((DateTimeOffset)startRange).ToUnixTimeSeconds();
+                long end1 = ((DateTimeOffset)endRange).ToUnixTimeSeconds();
+                long start2 = ((DateTimeOffset)newReservation.DateTime).ToUnixTimeSeconds();
+                long end2 = ((DateTimeOffset)endTimeRange).ToUnixTimeSeconds();
+
+                // Based on: https://stackoverflow.com/a/3786909
+                if ((start2 >= start1 && start2 <= end1) ||
+                    (end2 >= start1 && end2 <= end1))
+                {
+                    Console.WriteLine("Conflicted with something else, dont add it!");
+                    conflict = new Reservation(data["ReserveID"].ToString(), rUser, rRoom, startRange, duration);
+                    break;
+                }
+            }
+            return conflict;
         }
     }
 }

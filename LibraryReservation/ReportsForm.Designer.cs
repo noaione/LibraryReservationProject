@@ -30,7 +30,7 @@ namespace LibraryReservation
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listRoom = new System.Windows.Forms.ListBox();
+            this.lstRoom = new System.Windows.Forms.ListBox();
             this.lblSelectRoom = new System.Windows.Forms.Label();
             this.lblDTotal = new System.Windows.Forms.Label();
             this.lblDAvgTime = new System.Windows.Forms.Label();
@@ -53,18 +53,19 @@ namespace LibraryReservation
             this.label1.TabIndex = 0;
             this.label1.Text = "Daily Reports";
             // 
-            // listRoom
+            // lstRoom
             // 
-            this.listRoom.FormattingEnabled = true;
-            this.listRoom.ItemHeight = 20;
-            this.listRoom.Items.AddRange(new object[] {
+            this.lstRoom.FormattingEnabled = true;
+            this.lstRoom.ItemHeight = 20;
+            this.lstRoom.Items.AddRange(new object[] {
             "Amber 1",
             "Amber 2"});
-            this.listRoom.Location = new System.Drawing.Point(36, 98);
-            this.listRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listRoom.Name = "listRoom";
-            this.listRoom.Size = new System.Drawing.Size(178, 144);
-            this.listRoom.TabIndex = 1;
+            this.lstRoom.Location = new System.Drawing.Point(40, 99);
+            this.lstRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lstRoom.Name = "lstRoom";
+            this.lstRoom.Size = new System.Drawing.Size(178, 144);
+            this.lstRoom.TabIndex = 1;
+            this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 
             // lblSelectRoom
             // 
@@ -79,7 +80,7 @@ namespace LibraryReservation
             // lblDTotal
             // 
             this.lblDTotal.AutoSize = true;
-            this.lblDTotal.Location = new System.Drawing.Point(36, 258);
+            this.lblDTotal.Location = new System.Drawing.Point(37, 263);
             this.lblDTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDTotal.Name = "lblDTotal";
             this.lblDTotal.Size = new System.Drawing.Size(143, 20);
@@ -172,7 +173,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblDAvgTime);
             this.Controls.Add(this.lblDTotal);
             this.Controls.Add(this.lblSelectRoom);
-            this.Controls.Add(this.listRoom);
+            this.Controls.Add(this.lstRoom);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmReports";
@@ -186,7 +187,7 @@ namespace LibraryReservation
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listRoom;
+        private System.Windows.Forms.ListBox lstRoom;
         private System.Windows.Forms.Label lblSelectRoom;
         private System.Windows.Forms.Label lblDTotal;
         private System.Windows.Forms.Label lblDAvgTime;

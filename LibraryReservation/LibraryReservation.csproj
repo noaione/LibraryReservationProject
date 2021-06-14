@@ -50,7 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
@@ -87,7 +89,9 @@
     <Compile Include="PasswordManager.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Rooms.cs" />
-    <Compile Include="Users.cs" />
+    <Compile Include="..\..\Cloning\Users.cs">
+      <Link>Users.cs</Link>
+    </Compile>
     <EmbeddedResource Include="Home%28Librarian%29.resx">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </EmbeddedResource>
