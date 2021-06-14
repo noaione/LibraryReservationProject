@@ -89,9 +89,7 @@
     <Compile Include="PasswordManager.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Rooms.cs" />
-    <Compile Include="..\..\Cloning\Users.cs">
-      <Link>Users.cs</Link>
-    </Compile>
+    <Compile Include="Users.cs" />
     <EmbeddedResource Include="Home%28Librarian%29.resx">
       <DependentUpon>Home%28Librarian%29.cs</DependentUpon>
     </EmbeddedResource>
