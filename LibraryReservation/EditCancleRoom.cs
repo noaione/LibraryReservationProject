@@ -40,6 +40,7 @@ namespace LibraryReservation
             //UNTUK SEMENTARA
             if (lstRoom.SelectedIndex == 0)
             {
+                //Program.ReplaceForm(new frmEditRoomReservation(user), this);
                 DataRowView sel = (DataRowView)lstRoom.SelectedItem;
                 //string a = sel;
                 Program.ReplaceForm(new frmEditRoomReservation(user), this);
@@ -68,15 +69,13 @@ namespace LibraryReservation
 
         private void frmEditCancleRoom_Load(object sender, EventArgs e)
         {
-            string userid;
-            userid = $"{ user.UserID }";
-
             DatabaseBridge db = new DatabaseBridge();
-            DataTable roomList = db.QueryDBAsTable("select RoomID Reservations where UserID = '" + userid + "'");
-            foreach(DataRow row in roomList.Rows)
-            {
-                lstRoom.Items.Add(row["RoomID"]);
-            }
+            // Source: https://stackoverflow.com/a/17418301
+            DateTime now = DateTime.Now;
+            string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}' AND DateTime > '{SQLFormattedNow}'");
+
+
         }
 
         private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
