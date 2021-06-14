@@ -21,34 +21,22 @@ namespace LibraryReservation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            /*
-            //Move the Name That User Select from lstRoom to frmEditRoomReservation
-            int room = lstRoom.SelectedIndex;//blm kelar jdi maunya ada terpilih trus pindah
-            bool room = false;//kalau sudah ada terpilih, yg dipilih itu dipindahkan ke frmEditRoomReservation
-            if (room = true) //kalau tidak dia tetap di halaman tsb n bilang "You Haven't Select The Room"
-            {
-                MessageBox.Show("You Haven't Select The Room");
-                new frmEditCancleRoom().Show();
-                this.Hide();
-            }
-            else
-            {
-                new frmEditRoomReservation().Show();
-                this.Hide();
-            }*/
-
+            string a;
             //UNTUK SEMENTARA
-            if (lstRoom.SelectedIndex == 0)
-            {
-                //Program.ReplaceForm(new frmEditRoomReservation(user), this);
-                DataRowView sel = (DataRowView)lstRoom.SelectedItem;
-                //string a = sel;
-                Program.ReplaceForm(new frmEditRoomReservation(user), this);
-            }
-            else
+            if (lstRoom.SelectedItem == "")
             {
                 MessageBox.Show("You Not Yet Select The Room");
                 return;
+
+            }
+            else
+            {
+                // Program.ReplaceForm(new frmEditRoomReservation(user), this);
+                //DataRowView sel = (DataRowView)lstRoom.SelectedItem;
+                //string a = sel;
+                a = lstRoom.SelectedItem.ToString();
+                Program.ReplaceForm(new frmEditRoomReservation(user), this);
+                
             }
             
             //BLM KELAR
@@ -61,7 +49,10 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            //HARUS ADA DIPILIH DULU ROOMNYA TRUS BISA DI CANCLE, KALAU TIDAK DIA MINTA ULANG U/DI PILIH
+            string room;
+            room = lstRoom.SelectedItem.ToString();
+            DatabaseBridge db = new DatabaseBridge();
+            DataTable dt = db.QueryDBAsTable($"DELETE FROM Reservations WHERE RoomID = '" + room + "'");
             MessageBox.Show("The Room Have Been Cancled"); // DELETE FROM DB
             Program.ReplaceForm(new frmUserHome(user), this);
             //BLM KELAR
@@ -73,14 +64,16 @@ namespace LibraryReservation
             // Source: https://stackoverflow.com/a/17418301
             DateTime now = DateTime.Now;
             string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}' AND DateTime > '{SQLFormattedNow}'");
-
+            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'"); //AND DateTime > '{SQLFormattedNow}'");
+            lstRoom.DataSource = roomList;
+            lstRoom.DisplayMember = "RoomID";
+            lstRoom.ValueMember = "UserID";
 
         }
 
         private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

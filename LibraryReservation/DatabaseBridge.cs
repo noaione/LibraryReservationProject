@@ -423,5 +423,10 @@ namespace LibraryReservation
             }
             return conflict;
         }
+
+        internal DataTable QueryToDelegate(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
