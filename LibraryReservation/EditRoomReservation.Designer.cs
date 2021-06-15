@@ -37,6 +37,8 @@ namespace LibraryReservation
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lstDuration = new System.Windows.Forms.ListBox();
+            this.lblDuration = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -64,7 +66,7 @@ namespace LibraryReservation
             // 
             this.lblRoomName.AutoSize = true;
             this.lblRoomName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblRoomName.Location = new System.Drawing.Point(124, 180);
+            this.lblRoomName.Location = new System.Drawing.Point(129, 180);
             this.lblRoomName.Name = "lblRoomName";
             this.lblRoomName.Size = new System.Drawing.Size(2, 22);
             this.lblRoomName.TabIndex = 2;
@@ -111,19 +113,49 @@ namespace LibraryReservation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(444, 163);
+            this.button1.Location = new System.Drawing.Point(374, 147);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(296, 51);
+            this.button1.Size = new System.Drawing.Size(166, 81);
             this.button1.TabIndex = 7;
             this.button1.Text = "Select Other Room";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lstDuration
+            // 
+            this.lstDuration.FormattingEnabled = true;
+            this.lstDuration.ItemHeight = 20;
+            this.lstDuration.Items.AddRange(new object[] {
+            "60 Minutes",
+            "120 Minutes",
+            "180 Minutes",
+            "240 Minutes",
+            "300 Minutes",
+            "360 Minutes",
+            "420 Minutes",
+            "480 Minutes"});
+            this.lstDuration.Location = new System.Drawing.Point(622, 180);
+            this.lstDuration.Name = "lstDuration";
+            this.lstDuration.Size = new System.Drawing.Size(138, 124);
+            this.lstDuration.TabIndex = 10;
+            // 
+            // lblDuration
+            // 
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.Location = new System.Drawing.Point(629, 134);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(131, 32);
+            this.lblDuration.TabIndex = 9;
+            this.lblDuration.Text = "Duration";
             // 
             // frmEditRoomReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.lstDuration);
+            this.Controls.Add(this.lblDuration);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnSave);
@@ -150,5 +182,7 @@ namespace LibraryReservation
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox lstDuration;
+        private System.Windows.Forms.Label lblDuration;
     }
 }

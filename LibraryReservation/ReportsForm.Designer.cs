@@ -90,7 +90,7 @@ namespace LibraryReservation
             // lblDAvgTime
             // 
             this.lblDAvgTime.AutoSize = true;
-            this.lblDAvgTime.Location = new System.Drawing.Point(36, 283);
+            this.lblDAvgTime.Location = new System.Drawing.Point(36, 295);
             this.lblDAvgTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDAvgTime.Name = "lblDAvgTime";
             this.lblDAvgTime.Size = new System.Drawing.Size(252, 20);
