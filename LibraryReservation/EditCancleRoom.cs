@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -73,9 +74,20 @@ namespace LibraryReservation
             // Source: https://stackoverflow.com/a/17418301
             DateTime now = DateTime.Now;
             string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'");
-            lstRoom.DataSource = roomList;
-            lstRoom.DisplayMember = "RoomName";
+            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'", true);
+            // Mungkin ganti ke class Reservations, terus buat get custom biar keliatannya enak.
+            ArrayList reservedArray = new ArrayList();
+            foreach (DataRow room in roomList.Rows)
+            {
+                Rooms roomba = db.FindRoomByID(room["RoomID"].ToString(), true);
+                int duration = int.Parse(room["Duration"].ToString());
+                DateTime startRange = DateTime.Parse(room["DateTime"].ToString());
+                Reservation r = new Reservation(room["ReserveID"].ToString(), user, roomba, startRange, duration);
+                reservedArray.Add(r);
+            }
+            db.Close();
+            lstRoom.DataSource = reservedArray;
+            lstRoom.DisplayMember = "DisplayList";
             lstRoom.ValueMember = "ReserveID";
 
         }
