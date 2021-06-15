@@ -23,7 +23,9 @@ namespace LibraryReservation
         }
 
         public string ReserveID { get => rrid; set => rrid = value; }
+        public Users User { get => user; }
         public string UserID { get => user.UserID; }
+        public Rooms Room { get => room; }
         public string RoomID { get => room.RoomID; }
         public DateTime DateTime { get => datetime; set => datetime = value; }
         public string DateTimeSQL { get => datetime.ToString("s"); }
