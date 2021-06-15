@@ -14,7 +14,9 @@ namespace LibraryReservation
     {
         private static Users user;
         private static Rooms room;
-        public frmEditRoomReservation(Users u)
+        private string selectRoom;
+
+        public frmEditRoomReservation(Users u,string selectRoom)
         {
             InitializeComponent();
             user = u;
@@ -22,7 +24,9 @@ namespace LibraryReservation
 
         private void EditRoomReservation_Load(object sender, EventArgs e)
         {
-
+            lblRoomName.Text = selectRoom + "";
+            lblRoomName.Text = selectRoom;
+            lblRoomName.Text = $"{selectRoom}";
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -41,6 +45,16 @@ namespace LibraryReservation
         private void button1_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmEditCancleRoom(user), this);
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

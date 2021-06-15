@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace LibraryReservation
 {
     public partial class frmEditCancleRoom : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=E:\APU\Semester 2\Introduce To Oriented Object Programming\IOOP-Project\LibraryReservation\LibraryDatabase.mdf;Integrated Security = True");
         private static Users user;
         public frmEditCancleRoom(Users u)
         {
@@ -21,7 +23,7 @@ namespace LibraryReservation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string a;
+            string selectRoom;
             //UNTUK SEMENTARA
             if (lstRoom.SelectedItem == "")
             {
@@ -34,8 +36,8 @@ namespace LibraryReservation
                 // Program.ReplaceForm(new frmEditRoomReservation(user), this);
                 //DataRowView sel = (DataRowView)lstRoom.SelectedItem;
                 //string a = sel;
-                a = lstRoom.SelectedItem.ToString();
-                Program.ReplaceForm(new frmEditRoomReservation(user), this);
+                selectRoom = lstRoom.SelectedItem.ToString();
+                Program.ReplaceForm(new frmEditRoomReservation(user, selectRoom), this);
                 
             }
             
@@ -51,11 +53,21 @@ namespace LibraryReservation
         {
             string room;
             room = lstRoom.SelectedItem.ToString();
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "DELETE from Reservations where RoomID = '" + aa + "'";// + $" and UserID = '{user.UserID}" + "'";
+            con.Close();
+            MessageBox.Show("Record Delete Successfully");
+            Program.ReplaceForm(new frmUserHome(user), this);
+            /*
+            string room;
+            room = lstRoom.SelectedItem.ToString();
             DatabaseBridge db = new DatabaseBridge();
-            DataTable dt = db.QueryDBAsTable($"DELETE FROM Reservations WHERE RoomID = '" + room + "'");
+            db.CommitToDB("DELETE FROM Reservations WHERE RoomID = '" + room + "'");
             MessageBox.Show("The Room Have Been Cancled"); // DELETE FROM DB
             Program.ReplaceForm(new frmUserHome(user), this);
-            //BLM KELAR
+            //BLM KELAR*/
         }
 
         private void frmEditCancleRoom_Load(object sender, EventArgs e)

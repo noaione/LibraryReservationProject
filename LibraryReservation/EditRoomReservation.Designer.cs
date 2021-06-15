@@ -37,27 +37,27 @@ namespace LibraryReservation
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(141, 33);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Location = new System.Drawing.Point(212, 51);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(258, 26);
+            this.lblTitle.Size = new System.Drawing.Size(364, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Edit Room Reservation";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblRoom
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoom.Location = new System.Drawing.Point(83, 84);
-            this.lblRoom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRoom.Location = new System.Drawing.Point(124, 129);
             this.lblRoom.Name = "lblRoom";
-            this.lblRoom.Size = new System.Drawing.Size(107, 20);
+            this.lblRoom.Size = new System.Drawing.Size(158, 29);
             this.lblRoom.TabIndex = 1;
             this.lblRoom.Text = "Room Name";
             // 
@@ -65,38 +65,34 @@ namespace LibraryReservation
             // 
             this.lblRoomName.AutoSize = true;
             this.lblRoomName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblRoomName.Location = new System.Drawing.Point(83, 117);
-            this.lblRoomName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRoomName.Location = new System.Drawing.Point(124, 180);
             this.lblRoomName.Name = "lblRoomName";
-            this.lblRoomName.Size = new System.Drawing.Size(2, 15);
+            this.lblRoomName.Size = new System.Drawing.Size(2, 22);
             this.lblRoomName.TabIndex = 2;
             // 
             // lblDateTime
             // 
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(83, 151);
-            this.lblDateTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateTime.Location = new System.Drawing.Point(124, 232);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(163, 20);
+            this.lblDateTime.Size = new System.Drawing.Size(237, 29);
             this.lblDateTime.TabIndex = 3;
             this.lblDateTime.Text = "Edit Date and Time";
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(86, 180);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Location = new System.Drawing.Point(129, 277);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(201, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(300, 26);
             this.dateTimePicker.TabIndex = 4;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(101, 226);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(129, 348);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(173, 33);
+            this.btnSave.Size = new System.Drawing.Size(260, 51);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save Change";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -105,32 +101,41 @@ namespace LibraryReservation
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancle.Location = new System.Drawing.Point(325, 226);
-            this.btnCancle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancle.Location = new System.Drawing.Point(444, 348);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(140, 33);
+            this.btnCancle.Size = new System.Drawing.Size(299, 51);
             this.btnCancle.TabIndex = 6;
-            this.btnCancle.Text = "Cancle";
+            this.btnCancle.Text = "Back To Home";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(296, 106);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(444, 163);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 33);
+            this.button1.Size = new System.Drawing.Size(296, 51);
             this.button1.TabIndex = 7;
             this.button1.Text = "Select Other Room";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(486, 258);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 37);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmEditRoomReservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnSave);
@@ -139,7 +144,6 @@ namespace LibraryReservation
             this.Controls.Add(this.lblRoomName);
             this.Controls.Add(this.lblRoom);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmEditRoomReservation";
             this.Text = "EditRoomReservation";
             this.Load += new System.EventHandler(this.EditRoomReservation_Load);
@@ -158,5 +162,6 @@ namespace LibraryReservation
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
