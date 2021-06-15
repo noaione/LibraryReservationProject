@@ -51,13 +51,10 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            string room;
-            room = lstRoom.SelectedItem.ToString();
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE from Reservations where RoomID = '" + aa + "'";// + $" and UserID = '{user.UserID}" + "'";
-            con.Close();
+            DataRowView sel = (DataRowView)lstRoom.SelectedItem;
+            DatabaseBridge db = new DatabaseBridge();
+            string reserveID = sel["ReserveID"].ToString();
+            db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{reserveID}'");
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);
             /*
@@ -76,10 +73,10 @@ namespace LibraryReservation
             // Source: https://stackoverflow.com/a/17418301
             DateTime now = DateTime.Now;
             string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'"); //AND DateTime > '{SQLFormattedNow}'");
+            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'");
             lstRoom.DataSource = roomList;
-            lstRoom.DisplayMember = "RoomID";
-            lstRoom.ValueMember = "UserID";
+            lstRoom.DisplayMember = "RoomName";
+            lstRoom.ValueMember = "ReserveID";
 
         }
 
