@@ -26,7 +26,7 @@ namespace LibraryReservation
         {
             string selectRoom;
             //UNTUK SEMENTARA
-            if (lstRoom.SelectedItem == "")
+            if (lstRoom.SelectedIndex < 0)
             {
                 MessageBox.Show("You Not Yet Select The Room");
                 return;
@@ -37,8 +37,8 @@ namespace LibraryReservation
                 // Program.ReplaceForm(new frmEditRoomReservation(user), this);
                 //DataRowView sel = (DataRowView)lstRoom.SelectedItem;
                 //string a = sel;
-                selectRoom = lstRoom.SelectedItem.ToString();
-                Program.ReplaceForm(new frmEditRoomReservation(user, selectRoom), this);
+                Reservation sel = (Reservation)lstRoom.SelectedItem;
+                Program.ReplaceForm(new frmEditRoomReservation(user, sel), this);
                 
             }
             
@@ -52,10 +52,9 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-            DataRowView sel = (DataRowView)lstRoom.SelectedItem;
+            Reservation sel = (Reservation)lstRoom.SelectedItem;
             DatabaseBridge db = new DatabaseBridge();
-            string reserveID = sel["ReserveID"].ToString();
-            db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{reserveID}'");
+            db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{sel.ReserveID}'");
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);
             /*

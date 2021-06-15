@@ -13,20 +13,17 @@ namespace LibraryReservation
     public partial class frmEditRoomReservation : Form
     {
         private static Users user;
-        private static Rooms room;
-        private string selectRoom;
-
-        public frmEditRoomReservation(Users u,string selectRoom)
+        private static Reservation reservation;
+        public frmEditRoomReservation(Users u, Reservation r)
         {
             InitializeComponent();
             user = u;
+            reservation = r;
         }
 
         private void EditRoomReservation_Load(object sender, EventArgs e)
         {
-            lblRoomName.Text = selectRoom + "";
-            lblRoomName.Text = selectRoom;
-            lblRoomName.Text = $"{selectRoom}";
+            lblRoomName.Text = reservation.Room.Name;
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
