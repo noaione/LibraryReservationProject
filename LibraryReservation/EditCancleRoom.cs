@@ -52,19 +52,9 @@ namespace LibraryReservation
 
         private void btnCancle_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            string room;
-            room = lstRoom.SelectedItem.ToString();
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE from Reservations where RoomID = '" + room + "'";// + $" and UserID = '{user.UserID}" + "'";
-            con.Close();
-=======
             Reservation sel = (Reservation)lstRoom.SelectedItem;
             DatabaseBridge db = new DatabaseBridge();
             db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{sel.ReserveID}'");
->>>>>>> 008b3fd25f077f348bf4a97fdfe78f008a8dc4eb
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);
             /*
