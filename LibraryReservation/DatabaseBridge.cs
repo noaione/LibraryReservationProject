@@ -334,16 +334,16 @@ namespace LibraryReservation
         /// <param name="username">The username to be searched on</param>
         /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
         /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
-        public Rooms FindRoomByID(string roomID)
+        public Rooms FindRoomByID(string roomID, bool autoClose = false)
         {
             // FIXME: broken
-            int count = CountTable("Rooms", string.Format("where UserID='{0}'", roomID), true);
+            int count = CountTable("Rooms", string.Format("where RoomID='{0}'", roomID), true);
             if (count < 1)
             {
                 throw new RoomNotFoundException(roomID);
             }
 
-            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Rooms WHERE RoomID='{0}'", roomID));
+            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Rooms WHERE RoomID='{0}'", roomID), autoClose);
 
             foreach (DataRow row in table.Rows)
             {
