@@ -56,7 +56,7 @@ namespace LibraryReservation
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE from Reservations where RoomID = '" + aa + "'";// + $" and UserID = '{user.UserID}" + "'";
+            cmd.CommandText = "DELETE from Reservations where RoomID = '" + room + "'";// + $" and UserID = '{user.UserID}" + "'";
             con.Close();
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);

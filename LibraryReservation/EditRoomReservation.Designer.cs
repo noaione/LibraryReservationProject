@@ -37,7 +37,6 @@ namespace LibraryReservation
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -120,22 +119,11 @@ namespace LibraryReservation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(486, 258);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 37);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmEditRoomReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnSave);
@@ -162,6 +150,5 @@ namespace LibraryReservation
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancle;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
