@@ -28,5 +28,12 @@ namespace LibraryReservation
         public DateTime DateTime { get => datetime; set => datetime = value; }
         public string DateTimeSQL { get => datetime.ToString("s"); }
         public int Duration { get => duration; set => duration = value; }
+        public string DisplayList
+        {
+            get {
+                string dt = datetime.ToString("U");
+                return $"{room.Name} - {dt}";
+            }
+        }
     }
 }
