@@ -51,9 +51,9 @@ namespace LibraryReservation
             // 
             this.lstRoom.FormattingEnabled = true;
             this.lstRoom.ItemHeight = 20;
-            this.lstRoom.Location = new System.Drawing.Point(132, 160);
+            this.lstRoom.Location = new System.Drawing.Point(12, 146);
             this.lstRoom.Name = "lstRoom";
-            this.lstRoom.Size = new System.Drawing.Size(152, 164);
+            this.lstRoom.Size = new System.Drawing.Size(500, 164);
             this.lstRoom.TabIndex = 1;
             this.lstRoom.SelectedIndexChanged += new System.EventHandler(this.lstRoom_SelectedIndexChanged);
             // 
@@ -61,7 +61,7 @@ namespace LibraryReservation
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoom.Location = new System.Drawing.Point(128, 114);
+            this.lblRoom.Location = new System.Drawing.Point(181, 114);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(158, 29);
             this.lblRoom.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace LibraryReservation
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(336, 172);
+            this.btnEdit.Location = new System.Drawing.Point(536, 157);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(188, 54);
             this.btnEdit.TabIndex = 3;
@@ -81,7 +81,7 @@ namespace LibraryReservation
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancle.Location = new System.Drawing.Point(336, 255);
+            this.btnCancle.Location = new System.Drawing.Point(536, 246);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(188, 54);
             this.btnCancle.TabIndex = 4;
