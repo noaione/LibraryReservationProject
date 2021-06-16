@@ -107,10 +107,17 @@ namespace LibraryReservation
         /// </summary>
         public void Connect()
         {
-            if (!Connected)
+            try
             {
-                conn.Open();
+                if (!Connected)
+                {
+                    conn.Open();
+                }
             }
+            catch (Exception)
+            {
+            }
+            
         }
 
         /// <summary>

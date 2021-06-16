@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,20 +38,83 @@ namespace LibraryReservation
             lstRoom.DataSource = roomsList;
             lstRoom.DisplayMember = "Name";
             lstRoom.ValueMember = "RoomID";
-        }
 
+            DataTable reservations = db.QueryDBAsTable($"SELECT RoomID FROM Reservations");
+         
+        }
+        SqlConnection con;
+        //  int count = 0;
+        int totalReserve ,count = 0; string reserve = "";
+        double Durationcalc = 0; 
         private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
+            reserve = ""; 
+            totalReserve = count = 0;
+            Durationcalc = 0;
             DataRowView sel = (DataRowView)lstRoom.SelectedItem;
             DatabaseBridge databasebridge = new DatabaseBridge();
             DatabaseBridge db = databasebridge;
             DataTable reservationList = db.QueryDBAsTable($"SELECT ReserveID FROM Reservations WHERE RoomID = '{sel}'");
-            string roomId = sel["RoomID"].ToString();
-            string roomName = sel["Capacity"].ToString();
+            string roomname = sel["RoomID"].ToString();
+            string capacity = sel["Capacity"].ToString();
 
-            lblDTotal.Text = $"Debug:\nID: {roomId}\nName: {roomName}";*/
-            //Belum Yg Bawah List(Daily Repoty) & Monthly Report
+            using (SqlDataReader dr = DataManager.GetDataReader("GetRoomData", out con,
+                 new SqlParameter("@RoomID", roomname)))
+            {
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                         if (Convert.ToDateTime(dr["DateTime"].ToString().Substring(0, 10))
+                            == Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                        {
+                            totalReserve++;
+                            Durationcalc += double.Parse(dr["Duration"].ToString());
+                            count++;
+                        }
+                    }
+
+                }
+            }
+            con.Close();
+            reserve = totalReserve.ToString();
+            lblDTotal.Text = $"Room Name: {roomname}\nCapacity:{capacity}\nTotal Reserved:{reserve}";
+            lblDAvgTime.Text = "Average Reserved Time: " + ((Durationcalc/60) / count) + " hours";
+        }
+        
+        private void lblDTotal_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void lblDAvgTime_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void lblMUsed_Click(object sender, EventArgs e)
+        {
+            //most used room
+        }
+
+        private void lblLUsed_Click(object sender, EventArgs e)
+        {
+            //least used room
+        }
+
+        private void lblTotalHours_Click(object sender, EventArgs e)
+        {
+            //total hours booked
+        }
+
+        private void lblMAvgHours_Click(object sender, EventArgs e)
+        {
+            //avergae reserved time09
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+    
         }
     }
 }
