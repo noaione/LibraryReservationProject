@@ -39,6 +39,7 @@ namespace LibraryReservation
             this.button1 = new System.Windows.Forms.Button();
             this.lstDuration = new System.Windows.Forms.ListBox();
             this.lblDuration = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -149,11 +150,21 @@ namespace LibraryReservation
             this.lblDuration.TabIndex = 9;
             this.lblDuration.Text = "Duration";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "label1";
+            // 
             // frmEditRoomReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lstDuration);
             this.Controls.Add(this.lblDuration);
             this.Controls.Add(this.button1);
@@ -184,5 +195,6 @@ namespace LibraryReservation
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lstDuration;
         private System.Windows.Forms.Label lblDuration;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -33,17 +33,17 @@ namespace LibraryReservation
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-            if (lstPlace.SelectedIndex == 0 && lstDuration.SelectedIndex == 0)
+            if (lstPlace.SelectedItem == null && lstDuration.SelectedItem == null)
             {
                 MessageBox.Show("Please Select Place And Duration !!");
                 return;
             }
-            else if (lstPlace.SelectedIndex == 0)
+            else if (lstPlace.SelectedItem == null)
             {
                 MessageBox.Show("Please Select Your Place !!");
                 return;
             }
-            else if (lstDuration.SelectedIndex == 0)
+            else if (lstDuration.SelectedItem == null)
             {
                 MessageBox.Show("Please Select The Duration !!");
                 return;
