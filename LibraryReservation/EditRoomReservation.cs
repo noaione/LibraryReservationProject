@@ -52,24 +52,12 @@ namespace LibraryReservation
                 int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
 
                 
-
                 
-                con.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RoomID from Rooms where Name ='" + selectedRoom + "'";
-                object CommandText = null;
-                label1.Text = CommandText.ToString();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                
-
-                /*
                 DatabaseBridge db = new DatabaseBridge();
                 //string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
                 //Reservation reserve = new Reservation(reserverid, user, selectedRoom, time, duration);
                 db.CommitToDB($"update Reservations set DateTime = '" + time +"' and Duration = '"+duration+"' where RoomID = '"+selectedRoom+$"' and UserID = '{user.UserID}'");
-                */
+
 
                 /*
                 con.Open();
