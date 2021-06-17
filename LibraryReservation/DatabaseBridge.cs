@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 
 namespace LibraryReservation
 {
@@ -165,12 +164,12 @@ namespace LibraryReservation
         /// <param name="sqlCmd">The SQL command to be run</param>
         /// <param name="dontClose">Should we close the connection after running this?, default to false</param>
         /// <returns>Array of IDataRecord</returns>
-        public ArrayList QueryDBAsArray(string sqlCmd, bool dontClose = false)
+        public List<IDataRecord> QueryDBAsArray(string sqlCmd, bool dontClose = false)
         {
             Connect();
             SqlCommand fetchData = new SqlCommand(sqlCmd, conn);
             SqlDataReader reader = fetchData.ExecuteReader();
-            ArrayList list = new ArrayList();
+            List<IDataRecord> list = new List<IDataRecord>();
 
             while (reader.Read())
             {
