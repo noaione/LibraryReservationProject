@@ -149,5 +149,12 @@ namespace LibraryReservation
                 return 0;
             }
         }
+
+        public string DisplayData {
+            get {
+                string firstData = changeId.Split('-')[0];
+                return $"[{timestamp.ToString("yyyy/MM/dd HH:mm")}] {firstData}";
+            }
+        }
     }
 }
