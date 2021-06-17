@@ -91,16 +91,24 @@ namespace LibraryReservation
         {
             // Reject
             ReservationChange change = (ReservationChange)lstRequest.SelectedItem;
-            int removePos = lstRequest.SelectedIndex;
-            DatabaseBridge db = new DatabaseBridge();
-            db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = -1 WHERE ChangesID='{change.ChangeID}'");
-            lstRequest.SelectedIndex = 0;
-            lstRequest.DataSource = null;
-            reservationChanges.RemoveAt(removePos);
-            lstRequest.DataSource = reservationChanges;
-            lstRequest.DisplayMember = "DisplayData";
-            lstRequest.ValueMember = "ChangeID";
-            MessageBox.Show($"Request {change.ChangeID} has been rejected!");
+            if(lstRequest.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select a Request First !!");
+                return;
+            }
+            else
+            {
+                int removePos = lstRequest.SelectedIndex;
+                DatabaseBridge db = new DatabaseBridge();
+                db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = -1 WHERE ChangesID='{change.ChangeID}'");
+                lstRequest.SelectedIndex = 0;
+                lstRequest.DataSource = null;
+                reservationChanges.RemoveAt(removePos);
+                lstRequest.DataSource = reservationChanges;
+                lstRequest.DisplayMember = "DisplayData";
+                lstRequest.ValueMember = "ChangeID";
+                MessageBox.Show($"Request {change.ChangeID} has been rejected!");
+            }
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
