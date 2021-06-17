@@ -408,7 +408,7 @@ namespace LibraryReservation
                 int duration = int.Parse(data["Duration"].ToString());
                 Users rUser = FindUserByID(int.Parse(data["UserID"].ToString()));
                 Rooms rRoom = FindRoomByID(data["RoomID"].ToString());
-                DateTime startRange = DateTime.Parse(data["DateTime"].ToString() + "Z");
+                DateTime startRange = DateTime.Parse(data["DateTime"].ToString()).ToUniversalTime();
                 DateTime endRange = startRange.AddMinutes(duration);
 
                 DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);

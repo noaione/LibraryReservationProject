@@ -86,7 +86,7 @@ namespace LibraryReservation
             {
                 Rooms roomba = db.FindRoomByID(room["RoomID"].ToString(), true);
                 int duration = int.Parse(room["Duration"].ToString());
-                DateTime startRange = DateTime.Parse(room["DateTime"].ToString() + "Z");
+                DateTime startRange = DateTime.Parse(room["DateTime"].ToString()).ToUniversalTime();
                 Reservation r = new Reservation(room["ReserveID"].ToString(), user, roomba, startRange, duration);
                 reservedArray.Add(r);
             }
