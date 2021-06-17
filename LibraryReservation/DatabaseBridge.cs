@@ -448,7 +448,7 @@ namespace LibraryReservation
         public Reservation ReservationConflictCheck(Reservation newReservation)
         {
             string today = newReservation.DateTime.ToString("yyyy-MM-dd");
-            DataTable dataReserved = QueryDBAsTable($"SELECT * FROM Reservations WHERE RoomID = '{newReservation.RoomID}' AND DateTime > '{today} 00:00:00'");
+            DataTable dataReserved = QueryDBAsTable($"SELECT * FROM Reservations WHERE RoomID = '{newReservation.RoomID}' AND DateTime > '{today} 00:00:00'", true);
 
             Reservation conflict = null;
             foreach (DataRow data in dataReserved.Rows)
@@ -475,6 +475,40 @@ namespace LibraryReservation
                     break;
                 }
             }
+            if (conflict == null)
+            {
+                DataTable dataChanges = QueryDBAsTable($"SELECT * FROM ReservationChanges WHERE NewRoom = '{newReservation.RoomID}' AND DateAfter > '{today} 00:00:00' AND ApprovedFlag = 0");
+                foreach (DataRow data in dataChanges.Rows)
+                {
+                    int duration = int.Parse(data["DurationAfter"].ToString());
+                    DateTime startRange = DateTime.Parse(data["DateAfter"].ToString()).ToUniversalTime();
+                    DateTime endRange = startRange.AddMinutes(duration);
+
+                    DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);
+
+                    long start1 = ((DateTimeOffset)startRange).ToUnixTimeSeconds();
+                    long end1 = ((DateTimeOffset)endRange).ToUnixTimeSeconds();
+                    long start2 = ((DateTimeOffset)newReservation.DateTime).ToUnixTimeSeconds();
+                    long end2 = ((DateTimeOffset)endTimeRange).ToUnixTimeSeconds();
+
+                    // Based on: https://stackoverflow.com/a/3786909
+                    if ((start2 >= start1 && start2 <= end1) ||
+                        (end2 >= start1 && end2 <= end1))
+                    {
+                        Console.WriteLine("Conflicted with something else, dont add it!");
+                        try
+                        {
+                            conflict = FindReservationByID(data["ReserveID"].ToString());
+                            break;
+                        }
+                        catch (ReservationNotFoundException)
+                        {
+                            // catch error, but ignore it.
+                        }
+                    }
+                }
+            }
+            Close();
             return conflict;
         }
 
