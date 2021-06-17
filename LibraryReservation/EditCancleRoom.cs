@@ -60,6 +60,9 @@ namespace LibraryReservation
         {
             Reservation sel = (Reservation)lstRoom.SelectedItem;
             DatabaseBridge db = new DatabaseBridge();
+            // First dereference the ReservationChanges.
+            db.CommitToDB($"DELETE From ReservationChanges WHERE ReserveID='{sel.ReserveID}'");
+            // After that dereference the reservation.
             db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{sel.ReserveID}'");
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);
