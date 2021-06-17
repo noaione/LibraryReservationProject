@@ -28,6 +28,9 @@ namespace LibraryReservation
         private void EditRoomReservation_Load(object sender, EventArgs e)
         {
             lblRoomName.Text = reservation.Room.Name;
+            // Custom datepicker formatting
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "ddd, dd MMM yyyy HH:mm";
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -48,26 +51,30 @@ namespace LibraryReservation
                 //userid = $"{user.UserID}";
                 string selectedRoom;
                 selectedRoom = reservation.Room.Name;
+                string selRoom = reservation.Room.RoomID;
                 DateTime time = dateTimePicker.Value;
                 int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
+                reservation.DateTime = time;
+                reservation.Duration = duration;
 
-                
-                
                 DatabaseBridge db = new DatabaseBridge();
-                //string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-                //Reservation reserve = new Reservation(reserverid, user, selectedRoom, time, duration);
-                db.CommitToDB($"update Reservations set DateTime = '" + time +"' and Duration = '"+duration+"' where RoomID = '"+selectedRoom+$"' and UserID = '{user.UserID}'");
+                Reservation conflicted = db.ReservationConflictCheck(reservation);
+                if (conflicted != null)
+                {
+                    MessageBox.Show("Sorry, there's already someone else booking on that time.");
+                    return;
+                }
+                db.CommitToDB($"UPDATE Reservations SET DateTime = '{reservation.DateTimeSQL}', Duration = {reservation.Duration} WHERE ReserveID = '{reservation.ReserveID}'");
 
-
-                /*
-                con.Open();
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "update Reservations set DateTime = '" + time + "', Duration = '" + duration + "' where RoomID = '" + selectedRoom + $"' and UserID = '{user.UserID}'";
-                cmd.ExecuteNonQuery();
-                con.Close();*/
-                
-                /*
+                // bntr
+                //kykny jg yg pilih bagian dateTimePickernya harus di bkin biar gk kepilih yg hari" kemarin, soalnya bisa, kyk gini nih
+                //mau share screen jg?
+                //sip aku nonton
+                // ya
+                // ok, gw sekalian nyari cara benerinnya
+                /*ajg dah berhasil
+                 * 
+                 * sebelum gw lupa, kita harus cek kalo tanggal/durasi baru itu konflik apa enggak.o
                 con.Open();
                 SqlCommand cmd = new SqlCommand("update Reservations set DateTime = '" + time +"', Duration = '"+duration+"' where RoomID = '"+selectedRoom+$"' and UserID = '{user.UserID}'",con);
                 cmd.ExecuteNonQuery();
