@@ -40,13 +40,14 @@ namespace LibraryReservation
             this.lblTotalHours = new System.Windows.Forms.Label();
             this.lblMAvgHours = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblDTotalHours = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 24);
+            this.label1.Location = new System.Drawing.Point(24, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 0;
@@ -55,10 +56,7 @@ namespace LibraryReservation
             // lstRoom
             // 
             this.lstRoom.FormattingEnabled = true;
-            this.lstRoom.Items.AddRange(new object[] {
-            "Amber 1",
-            "Amber 2"});
-            this.lstRoom.Location = new System.Drawing.Point(27, 64);
+            this.lstRoom.Location = new System.Drawing.Point(27, 54);
             this.lstRoom.Name = "lstRoom";
             this.lstRoom.Size = new System.Drawing.Size(120, 95);
             this.lstRoom.TabIndex = 1;
@@ -67,7 +65,7 @@ namespace LibraryReservation
             // lblSelectRoom
             // 
             this.lblSelectRoom.AutoSize = true;
-            this.lblSelectRoom.Location = new System.Drawing.Point(24, 48);
+            this.lblSelectRoom.Location = new System.Drawing.Point(24, 38);
             this.lblSelectRoom.Name = "lblSelectRoom";
             this.lblSelectRoom.Size = new System.Drawing.Size(77, 13);
             this.lblSelectRoom.TabIndex = 2;
@@ -76,18 +74,17 @@ namespace LibraryReservation
             // lblDTotal
             // 
             this.lblDTotal.AutoSize = true;
-            this.lblDTotal.Location = new System.Drawing.Point(24, 162);
+            this.lblDTotal.Location = new System.Drawing.Point(24, 158);
             this.lblDTotal.Name = "lblDTotal";
-            this.lblDTotal.Size = new System.Drawing.Size(98, 13);
+            this.lblDTotal.Size = new System.Drawing.Size(138, 13);
             this.lblDTotal.TabIndex = 3;
-            this.lblDTotal.Text = "Total reservation: 2";
+            this.lblDTotal.Text = "Total reservation: Unknown";
             this.lblDTotal.Click += new System.EventHandler(this.lblDTotal_Click);
             // 
             // lblDAvgTime
             // 
             this.lblDAvgTime.AutoSize = true;
-            this.lblDAvgTime.Location = new System.Drawing.Point(24, 202);
-            this.lblDAvgTime.Location = new System.Drawing.Point(36, 295);
+            this.lblDAvgTime.Location = new System.Drawing.Point(24, 194);
             this.lblDAvgTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDAvgTime.Name = "lblDAvgTime";
             this.lblDAvgTime.Size = new System.Drawing.Size(172, 13);
@@ -99,7 +96,7 @@ namespace LibraryReservation
             // 
             this.lblMonthlyTitle.AutoSize = true;
             this.lblMonthlyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonthlyTitle.Location = new System.Drawing.Point(272, 24);
+            this.lblMonthlyTitle.Location = new System.Drawing.Point(272, 16);
             this.lblMonthlyTitle.Name = "lblMonthlyTitle";
             this.lblMonthlyTitle.Size = new System.Drawing.Size(120, 16);
             this.lblMonthlyTitle.TabIndex = 5;
@@ -108,7 +105,7 @@ namespace LibraryReservation
             // lblMUsed
             // 
             this.lblMUsed.AutoSize = true;
-            this.lblMUsed.Location = new System.Drawing.Point(272, 48);
+            this.lblMUsed.Location = new System.Drawing.Point(272, 40);
             this.lblMUsed.Name = "lblMUsed";
             this.lblMUsed.Size = new System.Drawing.Size(134, 13);
             this.lblMUsed.TabIndex = 6;
@@ -118,7 +115,7 @@ namespace LibraryReservation
             // lblLUsed
             // 
             this.lblLUsed.AutoSize = true;
-            this.lblLUsed.Location = new System.Drawing.Point(272, 72);
+            this.lblLUsed.Location = new System.Drawing.Point(272, 64);
             this.lblLUsed.Name = "lblLUsed";
             this.lblLUsed.Size = new System.Drawing.Size(137, 13);
             this.lblLUsed.TabIndex = 7;
@@ -128,7 +125,7 @@ namespace LibraryReservation
             // lblTotalHours
             // 
             this.lblTotalHours.AutoSize = true;
-            this.lblTotalHours.Location = new System.Drawing.Point(272, 96);
+            this.lblTotalHours.Location = new System.Drawing.Point(272, 88);
             this.lblTotalHours.Name = "lblTotalHours";
             this.lblTotalHours.Size = new System.Drawing.Size(164, 13);
             this.lblTotalHours.TabIndex = 8;
@@ -138,7 +135,7 @@ namespace LibraryReservation
             // lblMAvgHours
             // 
             this.lblMAvgHours.AutoSize = true;
-            this.lblMAvgHours.Location = new System.Drawing.Point(272, 120);
+            this.lblMAvgHours.Location = new System.Drawing.Point(272, 112);
             this.lblMAvgHours.Name = "lblMAvgHours";
             this.lblMAvgHours.Size = new System.Drawing.Size(163, 13);
             this.lblMAvgHours.TabIndex = 9;
@@ -147,7 +144,7 @@ namespace LibraryReservation
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(416, 192);
+            this.btnBack.Location = new System.Drawing.Point(392, 184);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 10;
@@ -155,11 +152,22 @@ namespace LibraryReservation
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblDTotalHours
+            // 
+            this.lblDTotalHours.AutoSize = true;
+            this.lblDTotalHours.Location = new System.Drawing.Point(24, 176);
+            this.lblDTotalHours.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDTotalHours.Name = "lblDTotalHours";
+            this.lblDTotalHours.Size = new System.Drawing.Size(153, 13);
+            this.lblDTotalHours.TabIndex = 11;
+            this.lblDTotalHours.Text = "Total Reserved Time: 20 hours";
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 228);
+            this.ClientSize = new System.Drawing.Size(481, 221);
+            this.Controls.Add(this.lblDTotalHours);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblMAvgHours);
             this.Controls.Add(this.lblTotalHours);
@@ -192,5 +200,6 @@ namespace LibraryReservation
         private System.Windows.Forms.Label lblTotalHours;
         private System.Windows.Forms.Label lblMAvgHours;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblDTotalHours;
     }
 }
