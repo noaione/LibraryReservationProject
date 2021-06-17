@@ -50,7 +50,7 @@ namespace LibraryReservation
             }
             else
             {
-                DateTime time = dateTimePicker.Value;
+                DateTime time = dateTimePicker.Value.ToUniversalTime();
                 int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
 
                 DatabaseBridge db = new DatabaseBridge();
@@ -62,7 +62,7 @@ namespace LibraryReservation
                 Reservation anyRoom = db.ReservationConflictCheck(reserve);
                 if (anyRoom != null)
                 {
-                    MessageBox.Show("Sorry, there's already another person booking this");
+                    MessageBox.Show("Sorry, there's already someone else booking at that time.");
                     // Show extra info
                     return;
                 }
@@ -77,9 +77,10 @@ namespace LibraryReservation
         private void Reserve_Room_Load(object sender, EventArgs e)
         {
             // Custom datepicker formatting
+            dateTimePicker.MinDate = DateTime.Now;
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "ddd, dd MMM yyyy HH:mm";
-            
+
             DatabaseBridge databaseBridge = new DatabaseBridge();
             DatabaseBridge db = databaseBridge;
             DataTable roomsList = db.QueryDBAsTable("SELECT * FROM Rooms");

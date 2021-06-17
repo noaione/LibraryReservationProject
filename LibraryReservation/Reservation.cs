@@ -18,7 +18,7 @@ namespace LibraryReservation
             this.rrid = rrid;
             this.user = user;
             this.room = room;
-            this.datetime = datetime;
+            this.datetime = TimeZoneInfo.ConvertTimeToUtc(datetime);
             this.duration = duration;
         }
 
@@ -27,14 +27,17 @@ namespace LibraryReservation
         public string UserID { get => user.UserID; }
         public Rooms Room { get => room; }
         public string RoomID { get => room.RoomID; }
-        public DateTime DateTime { get => datetime; set => datetime = value; }
-        public string DateTimeSQL { get => datetime.ToString("s"); }
+        public DateTime DateTime { get => datetime; set => datetime = TimeZoneInfo.ConvertTimeToUtc(value); }
+        public string DateTimeText { get => datetime.AddHours(8).ToString("ddd, dd MMM yyyy HH:mm"); }
+        public string DateTimeSQL { get => TimeZoneInfo.ConvertTimeToUtc(datetime).ToString("s"); }
         public int Duration { get => duration; set => duration = value; }
         public string DisplayList
         {
             get {
-                string dt = datetime.ToString("U");
-                return $"{room.Name} - {dt}";
+                // Aiman: Man, I hate timezone.
+                // Force change UTC to MYT, by adding 8 hours
+                string dt = datetime.AddHours(8).ToString("U");
+                return $"{room.Name} - {dt} MYT";
             }
         }
     }

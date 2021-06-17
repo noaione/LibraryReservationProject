@@ -14,7 +14,6 @@ namespace LibraryReservation
 {
     public partial class frmEditCancleRoom : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=E:\APU\Semester 2\Introduce To Oriented Object Programming\IOOP-Project\LibraryReservation\LibraryDatabase.mdf;Integrated Security = True");
         private static Users user;
         public frmEditCancleRoom(Users u)
         {
@@ -24,11 +23,10 @@ namespace LibraryReservation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string selectRoom;
             //UNTUK SEMENTARA
             if (lstRoom.SelectedIndex < 0)
             {
-                MessageBox.Show("You Not Yet Select The Room");
+                MessageBox.Show("Please select a room first!");
                 return;
 
             }
@@ -37,7 +35,15 @@ namespace LibraryReservation
                 // Program.ReplaceForm(new frmEditRoomReservation(user), this);
                 //DataRowView sel = (DataRowView)lstRoom.SelectedItem;
                 //string a = sel;
+                DatabaseBridge db = new DatabaseBridge();
                 Reservation sel = (Reservation)lstRoom.SelectedItem;
+
+                int alreadyRequested = db.CountTable("ReservationChanges", $"WHERE ReserveID = '{sel.ReserveID}' AND ApprovedFlag = 0");
+                if (alreadyRequested > 0)
+                {
+                    MessageBox.Show("You've already requested a change for this Reservation!");
+                    return;
+                }
                 Program.ReplaceForm(new frmEditRoomReservation(user, sel), this);
                 
             }
@@ -75,25 +81,22 @@ namespace LibraryReservation
             string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
             DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'", true);
             // Mungkin ganti ke class Reservations, terus buat get custom biar keliatannya enak.
-            ArrayList reservedArray = new ArrayList();
+            List<Reservation> reservedArray = new List<Reservation>();
             foreach (DataRow room in roomList.Rows)
             {
                 Rooms roomba = db.FindRoomByID(room["RoomID"].ToString(), true);
                 int duration = int.Parse(room["Duration"].ToString());
-                DateTime startRange = DateTime.Parse(room["DateTime"].ToString());
+                DateTime startRange = DateTime.Parse(room["DateTime"].ToString() + "Z");
                 Reservation r = new Reservation(room["ReserveID"].ToString(), user, roomba, startRange, duration);
                 reservedArray.Add(r);
             }
             db.Close();
+            // Sort by time
+            reservedArray.Sort((x, y) => x.DateTime.CompareTo(y.DateTime));
             lstRoom.DataSource = reservedArray;
             lstRoom.DisplayMember = "DisplayList";
             lstRoom.ValueMember = "ReserveID";
 
-        }
-
-        private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

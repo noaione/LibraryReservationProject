@@ -343,7 +343,6 @@ namespace LibraryReservation
         /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
         public Rooms FindRoomByID(string roomID, bool autoClose = false)
         {
-            // FIXME: broken
             int count = CountTable("Rooms", string.Format("where RoomID='{0}'", roomID), true);
             if (count < 1)
             {
@@ -409,7 +408,7 @@ namespace LibraryReservation
                 int duration = int.Parse(data["Duration"].ToString());
                 Users rUser = FindUserByID(int.Parse(data["UserID"].ToString()));
                 Rooms rRoom = FindRoomByID(data["RoomID"].ToString());
-                DateTime startRange = DateTime.Parse(data["DateTime"].ToString());
+                DateTime startRange = DateTime.Parse(data["DateTime"].ToString() + "Z");
                 DateTime endRange = startRange.AddMinutes(duration);
 
                 DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);
