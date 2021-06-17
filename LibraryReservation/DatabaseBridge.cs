@@ -20,7 +20,7 @@ namespace LibraryReservation
         /// </summary>
         /// <param name="name">The username itself</param>
         public UserNotFoundException(string name)
-            : base(String.Format("Failed to find User with data of: {0}", name))
+            : base(string.Format("Failed to find User with data of: {0}", name))
         {
 
         }
@@ -40,7 +40,28 @@ namespace LibraryReservation
         /// </summary>
         /// <param name="roomid">The room ID itself</param>
         public RoomNotFoundException(string roomid)
-            : base(String.Format("Failed to find Room with data of: {0}", roomid))
+            : base(string.Format("Failed to find Room with ID of: {0}", roomid))
+        {
+
+        }
+    }
+
+    class ReservationNotFoundException : Exception
+    {
+        /// <summary>
+        /// An exception when the provided ReserveID cannot be found on database
+        /// </summary>
+        public ReservationNotFoundException()
+        {
+
+        }
+
+        /// <summary>
+        /// An exception when the provided ReserveID cannot be found on database
+        /// </summary>
+        /// <param name="roomid">The reservation ID itself</param>
+        public ReservationNotFoundException(string reserveID)
+            : base(string.Format("Failed to find Reservation with ID of: {0}", reserveID))
         {
 
         }
@@ -61,7 +82,7 @@ namespace LibraryReservation
         /// </summary>
         /// <param name="name">The username itself</param>
         public UserNameAlreadyExist(string name)
-            : base(String.Format("Username {0} already exist", name))
+            : base(string.Format("Username {0} already exist", name))
         {
 
         }
@@ -82,7 +103,7 @@ namespace LibraryReservation
         /// </summary>
         /// <param name="reasoning">The reason it failed</par   am>
         public UnknownDatabaseException(string reasoning)
-            : base(String.Format("A failure occured when trying to query/commit to database: {0}", reasoning))
+            : base(string.Format("A failure occured when trying to query/commit to database: {0}", reasoning))
         {
 
         }
@@ -362,6 +383,34 @@ namespace LibraryReservation
             }
             throw new RoomNotFoundException(roomID);
         }
+
+        public Reservation FindReservationByID(string reservationID)
+        {
+            int count = CountTable("Reservations", string.Format("where ReserveID='{0}'", reservationID), true);
+            if (count < 1)
+            {
+                throw new ReservationNotFoundException(reservationID);
+            }
+
+            DataTable table = QueryDBAsTable($"SELECT R.*, RM.Name, RM.Capacity, RM.Location FROM Reservations AS R INNER JOIN Rooms as RM ON R.RoomID = RM.RoomID WHERE R.ReserveID = '{reservationID}'", true);
+
+            foreach (DataRow row in table.Rows)
+            {
+                string ruuid = row["RoomID"].ToString();
+                string rname = row["Name"].ToString();
+                int rsize = int.Parse(row["Capacity"].ToString());
+                string rlocation = row["Location"].ToString();
+
+                Rooms room = new Rooms(ruuid, rname, rsize, rlocation);
+                Users user = FindUserByID(int.Parse(row["UserID"].ToString()));
+                int duration = int.Parse(row["Duration"].ToString());
+                DateTime startRange = DateTime.Parse(row["DateTime"].ToString()).ToUniversalTime();
+                Reservation reservation = new Reservation(row["ReserveID"].ToString(), user, room, startRange, duration);
+                return reservation;
+            }
+            throw new ReservationNotFoundException(reservationID);
+        }
+
         /// <summary>
         /// Create a new Users records
         /// </summary>
