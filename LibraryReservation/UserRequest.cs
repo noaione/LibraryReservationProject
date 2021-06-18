@@ -55,6 +55,7 @@ namespace LibraryReservation
                 ReservationChange change = new ReservationChange(row["ChangesID"].ToString(), oldReserve, newRoom, startRange, duration, timestamp, reason, flag);
                 reservationChanges.Add(change);
             }
+            
             db.Close();
             reservationChanges.Sort((x, y) => x.Timestamp.CompareTo(y.Timestamp));
             lstRequest.DataSource = reservationChanges;
@@ -79,6 +80,50 @@ namespace LibraryReservation
         private void btnAccept_Click(object sender, EventArgs e)
         {
             // Approve
+
+            ReservationChange change = (ReservationChange)lstRequest.SelectedItem;
+            if (lstRequest.SelectedItem == null)
+            {
+                MessageBox.Show("Please Select a Request First !!");
+                return;
+            }
+            else
+            {
+                int acceptPos = lstRequest.SelectedIndex;
+                int removePos = lstRequest.SelectedIndex;
+                
+                DatabaseBridge db = new DatabaseBridge();
+                Reservation reservation = db.FindReservationByID("");
+                DataTable table = db.QueryDBAsTable("SELECT RC.*, R.UserID FROM ReservationChanges AS RC INNER JOIN Reservations AS R ON R.ReserveID = RC.ReserveID WHERE RC.ApprovedFlag = 0", true);
+                Dictionary<string, Rooms> savedRooms = new Dictionary<string, Rooms>();
+
+                foreach (DataRow row in table.Rows)
+                {
+                    string newRoomID = row["NewRoom"].ToString();
+                    Rooms newRoom;
+                    if (savedRooms.ContainsKey(newRoomID))
+                    {
+                        newRoom = savedRooms[newRoomID];
+                    }
+                    else
+                    {
+                        newRoom = db.FindRoomByID(newRoomID, true);
+                    }
+
+                    Reservation oldReserve = db.FindReservationByID(row["ReserveID"].ToString());
+                    int duration = int.Parse(row["DurationAfter"].ToString());
+                    DateTime startRange = DateTime.Parse(row["DateAfter"].ToString()).ToUniversalTime();
+                    int flag = int.Parse(row["ApprovedFlag"].ToString());
+
+                    //ReservationChange setchange = new ReservationChange(row["ChangesID"].ToString(), oldReserve, newRoom, startRange, duration, flag);
+                    //reservationChanges.Add(setchange);
+                    db.CommitToDB("UPDATE Reservations SET DateTime = '" + startRange + "', Duration = '"+ duration +"' WHERE ReserveID = '"+ oldReserve + "'");
+                    db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = 1 WHERE ChangesID='{change.ChangeID}'");
+
+                }
+
+            }
+
             // SQL Template:
             // $"UPDATE Reservations SET DateTime = '{reservation.DateTimeSQL}', Duration = {reservation.Duration} WHERE ReserveID = '{reservation.ReserveID}'"
             // $"UPDATE ReservationChanges SET ApprovedFlag = 1 WHERE ChangesID='{change.ChangeID}'"

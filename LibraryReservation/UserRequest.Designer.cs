@@ -47,30 +47,28 @@ namespace LibraryReservation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(32, 24);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(48, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 24);
+            this.label1.Size = new System.Drawing.Size(207, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Request Page";
             // 
             // lstRequest
             // 
             this.lstRequest.FormattingEnabled = true;
-            this.lstRequest.Location = new System.Drawing.Point(32, 64);
-            this.lstRequest.Margin = new System.Windows.Forms.Padding(2);
+            this.lstRequest.ItemHeight = 20;
+            this.lstRequest.Location = new System.Drawing.Point(48, 98);
             this.lstRequest.Name = "lstRequest";
-            this.lstRequest.Size = new System.Drawing.Size(248, 212);
+            this.lstRequest.Size = new System.Drawing.Size(370, 324);
             this.lstRequest.TabIndex = 1;
             this.lstRequest.SelectedIndexChanged += new System.EventHandler(this.lstRequest_SelectedIndexChanged);
             // 
             // btnAccept
             // 
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(32, 288);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAccept.Location = new System.Drawing.Point(48, 443);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(111, 39);
+            this.btnAccept.Size = new System.Drawing.Size(166, 60);
             this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Approve";
             this.btnAccept.UseVisualStyleBackColor = true;
@@ -79,10 +77,9 @@ namespace LibraryReservation
             // btnReject
             // 
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReject.Location = new System.Drawing.Point(160, 288);
-            this.btnReject.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReject.Location = new System.Drawing.Point(240, 443);
             this.btnReject.Name = "btnReject";
-            this.btnReject.Size = new System.Drawing.Size(111, 39);
+            this.btnReject.Size = new System.Drawing.Size(166, 60);
             this.btnReject.TabIndex = 3;
             this.btnReject.Text = "Reject";
             this.btnReject.UseVisualStyleBackColor = true;
@@ -91,10 +88,9 @@ namespace LibraryReservation
             // btnGoBack
             // 
             this.btnGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoBack.Location = new System.Drawing.Point(584, 296);
-            this.btnGoBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGoBack.Location = new System.Drawing.Point(876, 455);
             this.btnGoBack.Name = "btnGoBack";
-            this.btnGoBack.Size = new System.Drawing.Size(88, 32);
+            this.btnGoBack.Size = new System.Drawing.Size(132, 49);
             this.btnGoBack.TabIndex = 4;
             this.btnGoBack.Text = "Go Back";
             this.btnGoBack.UseVisualStyleBackColor = true;
@@ -102,19 +98,21 @@ namespace LibraryReservation
             // 
             // txtReasonBox
             // 
-            this.txtReasonBox.Location = new System.Drawing.Point(288, 192);
+            this.txtReasonBox.Location = new System.Drawing.Point(432, 295);
+            this.txtReasonBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtReasonBox.Multiline = true;
             this.txtReasonBox.Name = "txtReasonBox";
             this.txtReasonBox.ReadOnly = true;
-            this.txtReasonBox.Size = new System.Drawing.Size(384, 80);
+            this.txtReasonBox.Size = new System.Drawing.Size(574, 121);
             this.txtReasonBox.TabIndex = 5;
             // 
             // lblReason
             // 
             this.lblReason.AutoSize = true;
-            this.lblReason.Location = new System.Drawing.Point(288, 176);
+            this.lblReason.Location = new System.Drawing.Point(432, 271);
+            this.lblReason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(44, 13);
+            this.lblReason.Size = new System.Drawing.Size(65, 20);
             this.lblReason.TabIndex = 6;
             this.lblReason.Text = "Reason";
             // 
@@ -122,52 +120,57 @@ namespace LibraryReservation
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(464, 86);
+            this.lblInfo.Location = new System.Drawing.Point(696, 132);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(63, 13);
+            this.lblInfo.Size = new System.Drawing.Size(91, 20);
             this.lblInfo.TabIndex = 7;
             this.lblInfo.Text = "New Data";
             // 
             // lblNewInfoText
             // 
             this.lblNewInfoText.AutoSize = true;
-            this.lblNewInfoText.Location = new System.Drawing.Point(464, 104);
+            this.lblNewInfoText.Location = new System.Drawing.Point(696, 160);
+            this.lblNewInfoText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNewInfoText.Name = "lblNewInfoText";
-            this.lblNewInfoText.Size = new System.Drawing.Size(0, 13);
+            this.lblNewInfoText.Size = new System.Drawing.Size(0, 20);
             this.lblNewInfoText.TabIndex = 8;
             // 
             // lblOldInfoText
             // 
             this.lblOldInfoText.AutoSize = true;
-            this.lblOldInfoText.Location = new System.Drawing.Point(290, 104);
+            this.lblOldInfoText.Location = new System.Drawing.Point(435, 160);
+            this.lblOldInfoText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOldInfoText.Name = "lblOldInfoText";
-            this.lblOldInfoText.Size = new System.Drawing.Size(0, 13);
+            this.lblOldInfoText.Size = new System.Drawing.Size(0, 20);
             this.lblOldInfoText.TabIndex = 10;
             // 
             // lblOldInfo
             // 
             this.lblOldInfo.AutoSize = true;
             this.lblOldInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOldInfo.Location = new System.Drawing.Point(290, 86);
+            this.lblOldInfo.Location = new System.Drawing.Point(435, 132);
+            this.lblOldInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOldInfo.Name = "lblOldInfo";
-            this.lblOldInfo.Size = new System.Drawing.Size(57, 13);
+            this.lblOldInfo.Size = new System.Drawing.Size(84, 20);
             this.lblOldInfo.TabIndex = 9;
             this.lblOldInfo.Text = "Old Data";
             // 
             // lblRequester
             // 
             this.lblRequester.AutoSize = true;
-            this.lblRequester.Location = new System.Drawing.Point(288, 64);
+            this.lblRequester.Location = new System.Drawing.Point(432, 98);
+            this.lblRequester.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRequester.Name = "lblRequester";
-            this.lblRequester.Size = new System.Drawing.Size(59, 13);
+            this.lblRequester.Size = new System.Drawing.Size(88, 20);
             this.lblRequester.TabIndex = 11;
             this.lblRequester.Text = "Requester:";
             // 
             // frmSeeRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 361);
+            this.ClientSize = new System.Drawing.Size(1059, 555);
             this.Controls.Add(this.lblRequester);
             this.Controls.Add(this.lblOldInfoText);
             this.Controls.Add(this.lblOldInfo);
@@ -180,7 +183,6 @@ namespace LibraryReservation
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lstRequest);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSeeRequest";
             this.Text = "Library Reservation - User Request";
             this.Load += new System.EventHandler(this.frmSeeRequest_Load);

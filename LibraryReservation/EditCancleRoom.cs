@@ -23,7 +23,6 @@ namespace LibraryReservation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //UNTUK SEMENTARA
             if (lstRoom.SelectedIndex < 0)
             {
                 MessageBox.Show("Please select a room first!");
@@ -48,7 +47,6 @@ namespace LibraryReservation
                 
             }
             
-            //BLM KELAR
         }
 
         private void btnBack_Click(object sender, EventArgs e)
