@@ -51,7 +51,7 @@ namespace LibraryReservation
             {
                 Rooms roomba = roomsArray.Find((room) => room.RoomID == row["RoomID"].ToString());
                 int duration = int.Parse(row["Duration"].ToString());
-                DateTime startRange = DateTime.Parse(row["DateTime"].ToString()).ToUniversalTime();
+                DateTime startRange = DateTimeOffset.Parse(row["DateTime"].ToString() + "+00").UtcDateTime;
                 Reservation r = new Reservation(row["ReserveID"].ToString(), user, roomba, startRange, duration);
                 reservedArrays.Add(r);
             }
@@ -148,15 +148,15 @@ namespace LibraryReservation
                 lblDAvgTime.Text = $"Average Reserved Time: {average} hours";
             }
         }
-        
+
         private void lblDTotal_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void lblDAvgTime_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void lblMUsed_Click(object sender, EventArgs e)
@@ -181,7 +181,7 @@ namespace LibraryReservation
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-    
+
         }
     }
 }

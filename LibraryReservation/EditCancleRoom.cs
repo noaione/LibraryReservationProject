@@ -44,9 +44,9 @@ namespace LibraryReservation
                     return;
                 }
                 Program.ReplaceForm(new frmEditRoomReservation(user, sel), this);
-                
+
             }
-            
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace LibraryReservation
             {
                 Rooms roomba = db.FindRoomByID(room["RoomID"].ToString(), true);
                 int duration = int.Parse(room["Duration"].ToString());
-                DateTime startRange = DateTime.Parse(room["DateTime"].ToString()).ToUniversalTime();
+                DateTime startRange = DateTimeOffset.Parse(room["DateTime"].ToString() + "+00").UtcDateTime;
                 Reservation r = new Reservation(room["ReserveID"].ToString(), user, roomba, startRange, duration);
                 reservedArray.Add(r);
             }

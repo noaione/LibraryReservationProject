@@ -137,7 +137,7 @@ namespace LibraryReservation
             catch (Exception)
             {
             }
-            
+
         }
 
         /// <summary>
@@ -307,7 +307,8 @@ namespace LibraryReservation
                 if (type == "admin")
                 {
                     mapType = UserType.Librarian;
-                } else
+                }
+                else
                 {
                     mapType = UserType.Student;
                 }
@@ -404,7 +405,7 @@ namespace LibraryReservation
                 Rooms room = new Rooms(ruuid, rname, rsize, rlocation);
                 Users user = FindUserByID(int.Parse(row["UserID"].ToString()));
                 int duration = int.Parse(row["Duration"].ToString());
-                DateTime startRange = DateTime.Parse(row["DateTime"].ToString()).ToUniversalTime();
+                DateTime startRange = DateTimeOffset.Parse(row["DateTime"].ToString() + "+00").UtcDateTime; // DateTime.Parse(row["DateTime"].ToString());
                 Reservation reservation = new Reservation(row["ReserveID"].ToString(), user, room, startRange, duration);
                 return reservation;
             }
@@ -438,7 +439,8 @@ namespace LibraryReservation
                 Users user = FindUserByUsername(userInfo.Username);
                 Close();
                 return user;
-            } catch (UserNotFoundException)
+            }
+            catch (UserNotFoundException)
             {
                 Close();
                 throw new UnknownDatabaseException("Failed to insert new user to database");
@@ -456,7 +458,7 @@ namespace LibraryReservation
                 int duration = int.Parse(data["Duration"].ToString());
                 Users rUser = FindUserByID(int.Parse(data["UserID"].ToString()));
                 Rooms rRoom = FindRoomByID(data["RoomID"].ToString());
-                DateTime startRange = DateTime.Parse(data["DateTime"].ToString()).ToUniversalTime();
+                DateTime startRange = DateTimeOffset.Parse(data["DateTime"].ToString() + "+00").UtcDateTime;
                 DateTime endRange = startRange.AddMinutes(duration);
 
                 DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);
@@ -481,7 +483,7 @@ namespace LibraryReservation
                 foreach (DataRow data in dataChanges.Rows)
                 {
                     int duration = int.Parse(data["DurationAfter"].ToString());
-                    DateTime startRange = DateTime.Parse(data["DateAfter"].ToString()).ToUniversalTime();
+                    DateTime startRange = DateTimeOffset.Parse(data["DateAfter"].ToString() + "+00").UtcDateTime;
                     DateTime endRange = startRange.AddMinutes(duration);
 
                     DateTime endTimeRange = newReservation.DateTime.AddMinutes(newReservation.Duration);
