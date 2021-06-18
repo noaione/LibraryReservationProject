@@ -73,9 +73,8 @@ namespace LibraryReservation
                 // My wish will be never working with Timezone related stuff, I hate it.
                 // Whoever invented Timezone in programming should rethink their life decision.
                 // - M. Izaz
-                DateTimeOffset dtNew = new DateTimeOffset(datetime, new TimeSpan(+8, 0, 0));
-                //"ddd, dd MMM yyyy HH:mm"
-                return dtNew.DateTime.ToString("ddd, dd MMM yyyy HH:mm");
+                // "ddd, dd MMM yyyy HH:mm"
+                return datetime.AddHours(8).ToString("ddd, dd MMM yyyy HH:mm");
             }
         }
 
