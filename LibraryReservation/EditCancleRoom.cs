@@ -77,10 +77,9 @@ namespace LibraryReservation
         private void frmEditCancleRoom_Load(object sender, EventArgs e)
         {
             DatabaseBridge db = new DatabaseBridge();
-            // Source: https://stackoverflow.com/a/17418301
-            DateTime now = DateTime.Now;
-            string SQLFormattedNow = now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}'", true);
+            // People cannot change reservation 5 minutes before the reservation start!
+            DateTime gracePeriod5min = DateTime.UtcNow.Subtract(new TimeSpan(0, -5, 0));
+            DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}' AND DateTime > '{gracePeriod5min:s}'", true);
             // Mungkin ganti ke class Reservations, terus buat get custom biar keliatannya enak.
             List<Reservation> reservedArray = new List<Reservation>();
             foreach (DataRow room in roomList.Rows)
