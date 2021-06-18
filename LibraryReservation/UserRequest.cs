@@ -102,7 +102,7 @@ namespace LibraryReservation
                 Reservation newR = change.NewReservation;
                 DatabaseBridge db = new DatabaseBridge();
                 // Update the main database
-                db.CommitToDB($"UPDATE Reservations SET DateTime = '{newR.DateTimeSQL}', Duration = {newR.Duration} WHERE ReserveID = '{newR.ReserveID}'");
+                db.CommitToDB($"UPDATE Reservations SET DateTime = '{newR.DateTimeSQL}', Duration = {newR.Duration}, RoomID = '{newR.RoomID}'  WHERE ReserveID = '{newR.ReserveID}'");
                 // Update the changes flag to 1
                 db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = 1 WHERE ChangesID='{change.ChangeID}'");
                 ResetRequestDisplayData(removePos);
