@@ -37,16 +37,14 @@ namespace LibraryReservation
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
             this.lstDuration = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblRoomID = new System.Windows.Forms.Label();
-            this.lblMinutes = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(184, 25);
+            this.lblTitle.Location = new System.Drawing.Point(128, 32);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(207, 31);
@@ -56,18 +54,17 @@ namespace LibraryReservation
             // lstPlace
             // 
             this.lstPlace.FormattingEnabled = true;
-            this.lstPlace.Location = new System.Drawing.Point(29, 115);
-            this.lstPlace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstPlace.Location = new System.Drawing.Point(24, 112);
+            this.lstPlace.Margin = new System.Windows.Forms.Padding(2);
             this.lstPlace.Name = "lstPlace";
-            this.lstPlace.Size = new System.Drawing.Size(139, 56);
+            this.lstPlace.Size = new System.Drawing.Size(187, 56);
             this.lstPlace.TabIndex = 1;
-            this.lstPlace.SelectedIndexChanged += new System.EventHandler(this.lstPlace_SelectedIndexChange);
             // 
             // lblPlace
             // 
             this.lblPlace.AutoSize = true;
             this.lblPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlace.Location = new System.Drawing.Point(65, 77);
+            this.lblPlace.Location = new System.Drawing.Point(24, 80);
             this.lblPlace.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlace.Name = "lblPlace";
             this.lblPlace.Size = new System.Drawing.Size(62, 24);
@@ -77,10 +74,10 @@ namespace LibraryReservation
             // btnReserve
             // 
             this.btnReserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserve.Location = new System.Drawing.Point(195, 195);
-            this.btnReserve.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReserve.Location = new System.Drawing.Point(24, 256);
+            this.btnReserve.Margin = new System.Windows.Forms.Padding(2);
             this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(202, 40);
+            this.btnReserve.Size = new System.Drawing.Size(192, 40);
             this.btnReserve.TabIndex = 4;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = true;
@@ -90,7 +87,7 @@ namespace LibraryReservation
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuration.Location = new System.Drawing.Point(430, 66);
+            this.lblDuration.Location = new System.Drawing.Point(240, 80);
             this.lblDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(88, 24);
@@ -100,17 +97,17 @@ namespace LibraryReservation
             // dateTimePicker
             // 
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(189, 140);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Location = new System.Drawing.Point(24, 216);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(198, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(192, 20);
             this.dateTimePicker.TabIndex = 6;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(210, 104);
+            this.lblDate.Location = new System.Drawing.Point(24, 184);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(159, 24);
@@ -129,52 +126,30 @@ namespace LibraryReservation
             "360 Minutes",
             "420 Minutes",
             "480 Minutes"});
-            this.lstDuration.Location = new System.Drawing.Point(425, 96);
-            this.lstDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstDuration.Location = new System.Drawing.Point(240, 112);
+            this.lstDuration.Margin = new System.Windows.Forms.Padding(2);
             this.lstDuration.Name = "lstDuration";
-            this.lstDuration.Size = new System.Drawing.Size(93, 82);
+            this.lstDuration.Size = new System.Drawing.Size(192, 95);
             this.lstDuration.TabIndex = 8;
-            this.lstDuration.SelectedIndexChanged += new System.EventHandler(this.lstDuration_SelectedIndexChanged);
             // 
-            // button1
+            // btnBack
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(365, 265);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 29);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Back To Main Menu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // lblRoomID
-            // 
-            this.lblRoomID.AutoSize = true;
-            this.lblRoomID.Location = new System.Drawing.Point(40, 290);
-            this.lblRoomID.Name = "lblRoomID";
-            this.lblRoomID.Size = new System.Drawing.Size(0, 13);
-            this.lblRoomID.TabIndex = 10;
-            this.lblRoomID.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // lblMinutes
-            // 
-            this.lblMinutes.AutoSize = true;
-            this.lblMinutes.Location = new System.Drawing.Point(40, 355);
-            this.lblMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMinutes.Name = "lblMinutes";
-            this.lblMinutes.Size = new System.Drawing.Size(0, 13);
-            this.lblMinutes.TabIndex = 11;
-            this.lblMinutes.Click += new System.EventHandler(this.lblUserID_Click);
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(240, 264);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(189, 29);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back To Main Menu";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmReserveRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
-            this.Controls.Add(this.lblMinutes);
-            this.Controls.Add(this.lblRoomID);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(480, 334);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lstDuration);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.dateTimePicker);
@@ -183,7 +158,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblPlace);
             this.Controls.Add(this.lstPlace);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmReserveRoom";
             this.Text = "Reserve_Room";
             this.Load += new System.EventHandler(this.Reserve_Room_Load);
@@ -202,8 +177,6 @@ namespace LibraryReservation
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.ListBox lstDuration;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblRoomID;
-        private System.Windows.Forms.Label lblMinutes;
+        private System.Windows.Forms.Button btnBack;
     }
 }

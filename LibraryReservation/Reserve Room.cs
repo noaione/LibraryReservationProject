@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,60 +17,41 @@ namespace LibraryReservation
         {
             InitializeComponent();
             user = u;
-        }
-
-        private void lstPlace_SelectedIndexChange(object sender, EventArgs e)
-        {
-            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
-            string roomId = sel["RoomID"].ToString();
-            string roomName = sel["Name"].ToString();
-            string roomLocation = sel["Location"].ToString();
-            string capacity = sel["Capacity"].ToString();
-
-            lblRoomID.Text = $"Debug:\nID: {roomId}\nName: {roomName}\nLocation: {roomLocation}\nCapacity: {capacity}";
+            user = u;
         }
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-            if (lstPlace.SelectedItem == null && lstDuration.SelectedItem == null)
+            DataRowView sel = (DataRowView)lstPlace.SelectedItem;
+            DateTime time = dateTimePicker.Value.ToUniversalTime();
+            string durationText = (string)lstDuration.SelectedItem;
+            if (sel == null)
             {
-                MessageBox.Show("Please Select Place And Duration !!");
+                MessageBox.Show("Please select a place first!");
+            }
+            if (durationText == null)
+            {
+                MessageBox.Show("Please select a duration first!");
+            }
+
+            int duration = int.Parse(durationText.Replace(" Minutes", ""));
+
+            DatabaseBridge db = new DatabaseBridge();
+            string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+            Rooms reserveRoom = new Rooms(sel["RoomID"].ToString(), sel["Name"].ToString(), int.Parse(sel["Capacity"].ToString()), sel["Location"].ToString());
+            Reservation reserve = new Reservation(reserverid, user, reserveRoom, time, duration);
+
+            Reservation anyRoom = db.ReservationConflictCheck(reserve);
+            if (anyRoom != null)
+            {
+                MessageBox.Show("Sorry, there's already someone else booking at that time.");
+                // Show extra info
                 return;
             }
-            else if (lstPlace.SelectedItem == null)
-            {
-                MessageBox.Show("Please Select Your Place !!");
-                return;
-            }
-            else if (lstDuration.SelectedItem == null)
-            {
-                MessageBox.Show("Please Select The Duration !!");
-                return;
-            }
-            else
-            {
-                DateTime time = dateTimePicker.Value.ToUniversalTime();
-                int duration = int.Parse(lstDuration.SelectedItem.ToString().Replace(" Minutes", ""));
+            db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTimeSQL}', '{reserve.Duration}')");
 
-                DatabaseBridge db = new DatabaseBridge();
-                DataRowView sel = (DataRowView)lstPlace.SelectedItem;
-                string reserverid = "RR" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-                Rooms reserveRoom = new Rooms(sel["RoomID"].ToString(), sel["Name"].ToString(), int.Parse(sel["Capacity"].ToString()), sel["Location"].ToString());
-                Reservation reserve = new Reservation(reserverid, user, reserveRoom, time, duration);
-
-                Reservation anyRoom = db.ReservationConflictCheck(reserve);
-                if (anyRoom != null)
-                {
-                    MessageBox.Show("Sorry, there's already someone else booking at that time.");
-                    // Show extra info
-                    return;
-                }
-                db.CommitToDB($"INSERT INTO Reservations values ('{reserve.ReserveID}', '{reserve.UserID}', '{reserve.RoomID}', '{reserve.DateTimeSQL}', '{reserve.Duration}')");
-
-                MessageBox.Show("Your room is now reserved!");
-                Program.ReplaceForm(new frmUserHome(user), this);
-            }
-            
+            MessageBox.Show("Your room is now reserved!");
+            Program.ReplaceForm(new frmUserHome(user), this);
         }
 
         private void Reserve_Room_Load(object sender, EventArgs e)
@@ -87,30 +67,14 @@ namespace LibraryReservation
             lstPlace.DataSource = roomsList;
             lstPlace.DisplayMember = "Name";
             lstPlace.ValueMember = "RoomID";
-           
+            lstDuration.SelectedIndex = 0;
+            lstPlace.SelectedIndex = 0;
+
         }
 
-        private void lstDuration_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //DataRowView sel = (DataRowView)lstDuration.SelectedItem;
-            string sel = lstDuration.SelectedItem.ToString();
-            string duration = sel.ToString();
-            lblMinutes.Text = "Duration :" + duration;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmUserHome(user), this);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        { 
-            
-        }
-
-        private void lblUserID_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
