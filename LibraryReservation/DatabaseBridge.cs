@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace LibraryReservation
 {
-    class UserNotFoundException : Exception
+    public class UserNotFoundException : Exception
     {
         /// <summary>
         /// An exception when the provided username cannot be found on database
@@ -25,7 +25,7 @@ namespace LibraryReservation
 
         }
     }
-    class RoomNotFoundException : Exception
+    public class RoomNotFoundException : Exception
     {
         /// <summary>
         /// An exception when the provided RoomID cannot be found on database
@@ -46,7 +46,7 @@ namespace LibraryReservation
         }
     }
 
-    class ReservationNotFoundException : Exception
+    public class ReservationNotFoundException : Exception
     {
         /// <summary>
         /// An exception when the provided ReserveID cannot be found on database
@@ -67,7 +67,7 @@ namespace LibraryReservation
         }
     }
 
-    class UserNameAlreadyExist : Exception
+    public class UserNameAlreadyExist : Exception
     {
         /// <summary>
         /// An exception when the provided username already used.
@@ -88,7 +88,7 @@ namespace LibraryReservation
         }
     }
 
-    class UnknownDatabaseException : Exception
+    public class UnknownDatabaseException : Exception
     {
         /// <summary>
         /// An exception occured while trying to do something with the database
@@ -109,7 +109,7 @@ namespace LibraryReservation
         }
     }
 
-    class DatabaseBridge
+    public class DatabaseBridge
     {
         private SqlConnection conn;
 
@@ -224,6 +224,14 @@ namespace LibraryReservation
             Close();
         }
 
+        /// <summary>
+        /// Query the database and return a single column value
+        /// </summary>
+        /// <typeparam name="T">The type of the data to be casted to</typeparam>
+        /// <param name="sqlCmd">The SQL command to be run</param>
+        /// <param name="index">The index of the data to be get, default is 0</param>
+        /// <param name="dontClose">Should we close the connection after running this?, default to false</param>
+        /// <returns>The data on the selected column index with the data type provided</returns>
         public T QuerySingleColumn<T>(string sqlCmd, int index = 0, bool dontClose = false)
         {
             Connect();
@@ -319,9 +327,9 @@ namespace LibraryReservation
         }
 
         /// <summary>
-        /// Find a user from Users database by the username
+        /// Find a user from Users database by the user ID
         /// </summary>
-        /// <param name="username">The username to be searched on</param>
+        /// <param name="userId">The user ID to be searched on</param>
         /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
         /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
         public Users FindUserByID(int userId)
@@ -357,12 +365,13 @@ namespace LibraryReservation
         }
 
         /// <summary>
-        /// Find a user from Users database by the username
+        /// Find a room from Rooms database by the room ID
         /// </summary>
-        /// <param name="username">The username to be searched on</param>
+        /// <param name="roomID">The room ID to be searched on</param>
+        /// <param name="dontClose">Should we close the connection after running this?, default to false</param>
         /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
-        /// <exception cref="UserNotFoundException">If the given username cannot be found on database</exception>
-        public Rooms FindRoomByID(string roomID, bool autoClose = false)
+        /// <exception cref="RoomNotFoundException">If the given username cannot be found on database</exception>
+        public Rooms FindRoomByID(string roomID, bool dontClose = false)
         {
             int count = CountTable("Rooms", string.Format("where RoomID='{0}'", roomID), true);
             if (count < 1)
@@ -370,7 +379,7 @@ namespace LibraryReservation
                 throw new RoomNotFoundException(roomID);
             }
 
-            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Rooms WHERE RoomID='{0}'", roomID), autoClose);
+            DataTable table = QueryDBAsTable(string.Format("SELECT * FROM Rooms WHERE RoomID='{0}'", roomID), dontClose);
 
             foreach (DataRow row in table.Rows)
             {
@@ -385,6 +394,12 @@ namespace LibraryReservation
             throw new RoomNotFoundException(roomID);
         }
 
+        /// <summary>
+        /// Find a Reservation from Reservations database by the reservation ID
+        /// </summary>
+        /// <param name="reservationID">The reservation ID to be searched on</param>
+        /// <returns>The user if found, if not it will raise UserNotFoundException exception</returns>
+        /// <exception cref="ReservationNotFoundException">If the given username cannot be found on database</exception>
         public Reservation FindReservationByID(string reservationID)
         {
             int count = CountTable("Reservations", string.Format("where ReserveID='{0}'", reservationID), true);
@@ -447,6 +462,12 @@ namespace LibraryReservation
             }
         }
 
+        /// <summary>
+        /// Check if a reservation will conflict with another reservation.
+        /// This will also check the Changes that are not approved yet so it make sure you can't change it to that.
+        /// </summary>
+        /// <param name="newReservation">The new reservation to be checked on</param>
+        /// <returns>If the database conflicted or not</returns>
         public Reservation ReservationConflictCheck(Reservation newReservation)
         {
             string today = newReservation.DateTime.ToString("yyyy-MM-dd");
@@ -512,11 +533,6 @@ namespace LibraryReservation
             }
             Close();
             return conflict;
-        }
-
-        internal DataTable QueryToDelegate(string v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
