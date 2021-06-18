@@ -130,19 +130,21 @@ namespace LibraryReservation
             // lblNewInfoText
             // 
             this.lblNewInfoText.AutoSize = true;
+            this.lblNewInfoText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNewInfoText.Location = new System.Drawing.Point(696, 160);
             this.lblNewInfoText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNewInfoText.Name = "lblNewInfoText";
-            this.lblNewInfoText.Size = new System.Drawing.Size(0, 20);
+            this.lblNewInfoText.Size = new System.Drawing.Size(2, 22);
             this.lblNewInfoText.TabIndex = 8;
             // 
             // lblOldInfoText
             // 
             this.lblOldInfoText.AutoSize = true;
+            this.lblOldInfoText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblOldInfoText.Location = new System.Drawing.Point(435, 160);
             this.lblOldInfoText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOldInfoText.Name = "lblOldInfoText";
-            this.lblOldInfoText.Size = new System.Drawing.Size(0, 20);
+            this.lblOldInfoText.Size = new System.Drawing.Size(2, 22);
             this.lblOldInfoText.TabIndex = 10;
             // 
             // lblOldInfo
