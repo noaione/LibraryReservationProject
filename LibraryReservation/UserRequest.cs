@@ -26,6 +26,32 @@ namespace LibraryReservation
             return $"Room: {rr.Room.Name}\nTime: {rr.DateTimeText}\nDuration: {rr.Duration} minutes";
         }
 
+        private void ResetRequestDisplayData(int removePos = -1)
+        {
+            lstRequest.DataSource = null;
+            if (removePos >= 0)
+            {
+                reservationChanges.RemoveAt(removePos);
+            }
+            lstRequest.DataSource = reservationChanges;
+            lstRequest.DisplayMember = "DisplayData";
+            lstRequest.ValueMember = "ChangeID";
+            if (reservationChanges.Count < 1)
+            {
+                lblRequester.Text = "Requester: None";
+                lblOldInfoText.Text = "Please select a request first";
+                lblNewInfoText.Text = "Please select a request first";
+            }
+            else
+            {
+                lblRequester.Text = $"Requester: {reservationChanges[0].OldReservation.User.Name}";
+                lblOldInfoText.Text = FormatReservation(reservationChanges[0].OldReservation);
+                lblNewInfoText.Text = FormatReservation(reservationChanges[0].NewReservation);
+                txtReasonBox.Text = reservationChanges[0].Reason;
+                lstRequest.SelectedIndex = 0;
+            }
+        }
+
         private void frmSeeRequest_Load(object sender, EventArgs e)
         {
             DatabaseBridge db = new DatabaseBridge();
@@ -58,23 +84,7 @@ namespace LibraryReservation
 
             db.Close();
             reservationChanges.Sort((x, y) => x.Timestamp.CompareTo(y.Timestamp));
-            lstRequest.DataSource = reservationChanges;
-            lstRequest.DisplayMember = "DisplayData";
-            lstRequest.ValueMember = "ChangeID";
-            if (reservationChanges.Count < 1)
-            {
-                lblRequester.Text = "Requester: None";
-                lblOldInfoText.Text = "Please select a request first";
-                lblNewInfoText.Text = "Please select a request first";
-            }
-            else
-            {
-                lblRequester.Text = $"Requester: {reservationChanges[0].OldReservation.User.Name}";
-                lblOldInfoText.Text = FormatReservation(reservationChanges[0].OldReservation);
-                lblNewInfoText.Text = FormatReservation(reservationChanges[0].NewReservation);
-                txtReasonBox.Text = reservationChanges[0].Reason;
-                lstRequest.SelectedIndex = 0;
-            }
+            ResetRequestDisplayData();
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -95,12 +105,7 @@ namespace LibraryReservation
                 db.CommitToDB($"UPDATE Reservations SET DateTime = '{newR.DateTimeSQL}', Duration = {newR.Duration} WHERE ReserveID = '{newR.ReserveID}'");
                 // Update the changes flag to 1
                 db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = 1 WHERE ChangesID='{change.ChangeID}'");
-                lstRequest.SelectedIndex = 0;
-                lstRequest.DataSource = null;
-                reservationChanges.RemoveAt(removePos);
-                lstRequest.DataSource = reservationChanges;
-                lstRequest.DisplayMember = "DisplayData";
-                lstRequest.ValueMember = "ChangeID";
+                ResetRequestDisplayData(removePos);
                 MessageBox.Show($"Request {change.ChangeID} has been accepted!");
             }
             // SQL Template:
@@ -125,12 +130,7 @@ namespace LibraryReservation
                 int removePos = lstRequest.SelectedIndex;
                 DatabaseBridge db = new DatabaseBridge();
                 db.CommitToDB($"UPDATE ReservationChanges SET ApprovedFlag = -1 WHERE ChangesID='{change.ChangeID}'");
-                lstRequest.SelectedIndex = 0;
-                lstRequest.DataSource = null;
-                reservationChanges.RemoveAt(removePos);
-                lstRequest.DataSource = reservationChanges;
-                lstRequest.DisplayMember = "DisplayData";
-                lstRequest.ValueMember = "ChangeID";
+                ResetRequestDisplayData(removePos);
                 MessageBox.Show($"Request {change.ChangeID} has been rejected!");
             }
         }
