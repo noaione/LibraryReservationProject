@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryReservation
@@ -25,6 +20,11 @@ namespace LibraryReservation
         private void btnBack_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmLibrarianHome(user), this);
+        }
+
+        private void ReportDailyReadjust(Reservation r)
+        {
+            
         }
 
         private void frmReports_Load(object sender, EventArgs e)
@@ -113,16 +113,16 @@ namespace LibraryReservation
             if (selRoom == null || allReservations == null)
             {
                 lblDTotal.Text = "Total reservation: 0";
-                lblDTotalHours.Text = $"Total Reserved Hours: 0 hour";
+                lblDTotalHours.Text = "Total Reserved Hours: 0 hour";
                 lblDAvgTime.Text = "Average Reserved Time: 0 Hour";
                 return;
             }
-            List<Reservation> reservations = allReservations.FindAll(room => room.RoomID == selRoom.RoomID);
+            List<Reservation> reservations = allReservations.FindAll(room => room.RoomID == selRoom.RoomID && room.DateTime == DateTime.UtcNow.Date);
             if (reservations.Count < 1)
             {
                 lblDTotal.Text = "Total reservation: 0";
-                lblDTotalHours.Text = $"Total Reserved Hours: 0 hour";
-                lblDAvgTime.Text = $"Average Reserved Time: 0 hour";
+                lblDTotalHours.Text = "Total Reserved Hours: 0 hour";
+                lblDAvgTime.Text = "Average Reserved Time: 0 hour";
             }
             else
             {
