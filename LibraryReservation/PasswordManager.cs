@@ -47,7 +47,6 @@ namespace LibraryReservation
         public static bool Verify(string password, string hashedPass)
         {
             string combinedWithEntropy = new LibrarySecrets().PassEntropy + password;
-            // TODO: fix this
             byte[] hashBytes = Convert.FromBase64String(hashedPass);
             byte[] salt = new byte[Salt];
             Array.Copy(hashBytes, 0, salt, 0, Salt);
