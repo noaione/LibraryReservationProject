@@ -107,6 +107,18 @@ namespace LibraryReservation
             lstRoom.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Check if the time is today. Will be checked in UTC
+        /// </summary>
+        /// <param name="time">The time to be checked on</param>
+        /// <returns>Is the provided time is today</returns>
+        private bool IsToday(DateTime time)
+        {
+            time = time.ToUniversalTime();
+            DateTime today = DateTime.UtcNow;
+            return time.Year == today.Year && time.Month == today.Month && time.Day == today.Day;
+        }
+
         private void lstRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             Rooms selRoom = (Rooms)lstRoom.SelectedItem;
@@ -117,7 +129,7 @@ namespace LibraryReservation
                 lblDAvgTime.Text = "Average Reserved Time: 0 Hour";
                 return;
             }
-            List<Reservation> reservations = allReservations.FindAll(room => room.RoomID == selRoom.RoomID && room.DateTime == DateTime.UtcNow.Date);
+            List<Reservation> reservations = allReservations.FindAll(room => room.RoomID == selRoom.RoomID && IsToday(room.DateTime));
             if (reservations.Count < 1)
             {
                 lblDTotal.Text = "Total reservation: 0";
