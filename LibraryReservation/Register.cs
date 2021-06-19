@@ -55,6 +55,35 @@ namespace LibraryReservation
             }
         }
 
+        private bool IsPasswordGood(string password)
+        {
+            if (password.Length < MinimumPass)
+            {
+                MessageBox.Show("Password length must be more than or equal 6");
+                return false;
+            }
+            if (!Regex.IsMatch(password, @"[0-9]"))
+            {
+                MessageBox.Show("Password must include a single number");
+                return false;
+            }
+            return true;
+        }
+
+        private bool CheckMinimumString(string content, int minimum = 0)
+        {
+            if (string.IsNullOrWhiteSpace(content) || string.IsNullOrEmpty(content))
+            {
+                return false;
+            }
+
+            if (content.Length < minimum)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             txtInPassword.Focus();
@@ -62,22 +91,28 @@ namespace LibraryReservation
             string fullname = txtInFullName.Text;
             string password = txtInPassword.Text;
             string conpassword = txtInPasswordConf.Text;
-
-            if (password.Length < MinimumPass && conpassword.Length < MinimumPass)
+            if (!CheckMinimumString(username, 3))
             {
-                MessageBox.Show("Password length must be more than 6");
+                MessageBox.Show("Your username must be more or equal than 3 characters");
                 return;
             }
-            else
+            if (!CheckMinimumString(fullname, 1))
             {
-                if (password != conpassword)
-                {
-                    MessageBox.Show("You Must Have Same Password And Confirm Password");
-                    return;
-                }
+                MessageBox.Show("Full name cannot be empty!");
+                return;
+            }
+            if (!IsPasswordGood(password))
+            {
+                return;
             }
 
-            string hashPassword = PasswordManager.HashPassword(password);
+            if (password != conpassword)
+            {
+                MessageBox.Show("The password and your password confirmation is not the same!");
+                return;
+            }
+
+            string hashPassword = PasswordManager.HashPassword(password);   
             DatabaseBridge db = new DatabaseBridge();
             try
             {
