@@ -29,7 +29,7 @@ namespace LibraryReservation
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDailyTitle = new System.Windows.Forms.Label();
             this.lstRoom = new System.Windows.Forms.ListBox();
             this.lblSelectRoom = new System.Windows.Forms.Label();
             this.lblDTotal = new System.Windows.Forms.Label();
@@ -43,15 +43,15 @@ namespace LibraryReservation
             this.lblDTotalHours = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblDailyTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Daily Reports";
+            this.lblDailyTitle.AutoSize = true;
+            this.lblDailyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDailyTitle.Location = new System.Drawing.Point(24, 14);
+            this.lblDailyTitle.Name = "lblDailyTitle";
+            this.lblDailyTitle.Size = new System.Drawing.Size(95, 16);
+            this.lblDailyTitle.TabIndex = 0;
+            this.lblDailyTitle.Text = "Daily Report";
             // 
             // lstRoom
             // 
@@ -96,9 +96,9 @@ namespace LibraryReservation
             this.lblMonthlyTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMonthlyTitle.Location = new System.Drawing.Point(272, 16);
             this.lblMonthlyTitle.Name = "lblMonthlyTitle";
-            this.lblMonthlyTitle.Size = new System.Drawing.Size(120, 16);
+            this.lblMonthlyTitle.Size = new System.Drawing.Size(112, 16);
             this.lblMonthlyTitle.TabIndex = 5;
-            this.lblMonthlyTitle.Text = "Monthly Reports";
+            this.lblMonthlyTitle.Text = "Monthly Report";
             // 
             // lblMUsed
             // 
@@ -172,7 +172,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblDTotal);
             this.Controls.Add(this.lblSelectRoom);
             this.Controls.Add(this.lstRoom);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDailyTitle);
             this.Name = "frmReports";
             this.Text = "Library Reservation - Reports";
             this.Load += new System.EventHandler(this.frmReports_Load);
@@ -183,7 +183,7 @@ namespace LibraryReservation
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDailyTitle;
         private System.Windows.Forms.ListBox lstRoom;
         private System.Windows.Forms.Label lblSelectRoom;
         private System.Windows.Forms.Label lblDTotal;
