@@ -20,11 +20,6 @@ namespace LibraryReservation
             user = u;
         }
 
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRsrvRoom_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmReserveRoom(user), this);
@@ -44,11 +39,6 @@ namespace LibraryReservation
         {
             //lblName.Text = $"Welcome back, {user.Name}";
             lblName.Text = $"{ user.Name }";
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

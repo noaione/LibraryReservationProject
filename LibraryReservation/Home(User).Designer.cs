@@ -45,7 +45,6 @@ namespace LibraryReservation
             this.lblTitle.Size = new System.Drawing.Size(144, 52);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Home";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnRsrvRoom
             // 
@@ -86,7 +85,6 @@ namespace LibraryReservation
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(2, 27);
             this.lblName.TabIndex = 4;
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // frmUserHome
             // 

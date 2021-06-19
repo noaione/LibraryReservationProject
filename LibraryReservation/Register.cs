@@ -24,58 +24,6 @@ namespace LibraryReservation
         {
             Program.ReplaceForm(new frmLogin(), this);
         }
-        
-        // TODO: Add username verification yadayada.
-        private void btnRegister_Click(object sender, EventArgs e)
-            
-        {
-            txtInPassword.Focus();
-            string username = txtInUsername.Text;
-            string fullname = txtInPassword.Text;
-            string password = txtInFullName.Text;
-            string conpassword = txtInPasswordConf.Text;
-
-            if (password.Length < MinimumPass && conpassword.Length < MinimumPass)
-            {
-                MessageBox.Show("Password length must be more than 6");
-                return;
-            }
-            else
-            {
-                if(password != conpassword)
-                {
-                    MessageBox.Show("You Must Have Same Password And Confirm Password");
-                    return;
-                }
-            }
-
-            string hashPassword = PasswordManager.HashPassword(password);
-            DatabaseBridge db = new DatabaseBridge();
-            try
-            {
-                Users user = new Users(fullname, username, hashPassword);
-                user = db.CreateNewUser(user);
-                if (user.Type == UserType.Librarian)
-                {
-                    Program.ReplaceForm(new frmLibrarianHome(user), this);
-                }
-                else
-                {
-                    Program.ReplaceForm(new frmUserHome(user), this);
-                }
-            } catch (UserNameAlreadyExist)
-            {
-                MessageBox.Show("Username already exist");
-                txtInUsername.Clear();
-                txtInUsername.Focus();
-                return;
-                
-            } catch (UnknownDatabaseException)
-            {
-                MessageBox.Show("An unknown error occured, please try again later");
-                return;
-            }
-        }
 
         /// <summary>
         /// Verify if the provided username is only Alphanumerical and no space included.
@@ -114,12 +62,7 @@ namespace LibraryReservation
             }
         }
 
-        private void txtInFullName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
             txtInPassword.Focus();
             string username = txtInUsername.Text;
@@ -169,21 +112,6 @@ namespace LibraryReservation
                 MessageBox.Show("An unknown error occured, please try again later");
                 return;
             }
-        }
-
-        private void txtInUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtInFullName_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmRegister_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

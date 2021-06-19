@@ -51,7 +51,6 @@ namespace LibraryReservation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             Reservation newReservation = reservechange.NewReservation;
 
             DatabaseBridge db = new DatabaseBridge();

@@ -86,7 +86,6 @@ namespace LibraryReservation
             this.Controls.Add(this.lblTitle);
             this.Name = "frmLibrarianHome";
             this.Text = "Library Reservation";
-            this.Load += new System.EventHandler(this.frmLibrarianHome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

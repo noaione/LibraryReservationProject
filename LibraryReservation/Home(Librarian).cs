@@ -19,10 +19,6 @@ namespace LibraryReservation
             user = u;
         }
 
-        public frmLibrarianHome()
-        {
-        }
-
         private void btnReport_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmReports(user), this);
@@ -36,11 +32,6 @@ namespace LibraryReservation
         private void btnReq_Click(object sender, EventArgs e)
         {
             Program.ReplaceForm(new frmSeeRequest(user), this);
-        }
-
-        private void frmLibrarianHome_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

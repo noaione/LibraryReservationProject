@@ -31,9 +31,6 @@ namespace LibraryReservation
             }
             else
             {
-                // Program.ReplaceForm(new frmEditRoomReservation(user), this);
-                //DataRowView sel = (DataRowView)lstRoom.SelectedItem;
-                //string a = sel;
                 DatabaseBridge db = new DatabaseBridge();
                 Reservation sel = (Reservation)lstRoom.SelectedItem;
 
@@ -64,14 +61,6 @@ namespace LibraryReservation
             db.CommitToDB($"DELETE FROM Reservations WHERE ReserveID='{sel.ReserveID}'");
             MessageBox.Show("Record Delete Successfully");
             Program.ReplaceForm(new frmUserHome(user), this);
-            /*
-            string room;
-            room = lstRoom.SelectedItem.ToString();
-            DatabaseBridge db = new DatabaseBridge();
-            db.CommitToDB("DELETE FROM Reservations WHERE RoomID = '" + room + "'");
-            MessageBox.Show("The Room Have Been Cancled"); // DELETE FROM DB
-            Program.ReplaceForm(new frmUserHome(user), this);
-            //BLM KELAR*/
         }
 
         private void frmEditCancleRoom_Load(object sender, EventArgs e)
@@ -80,7 +69,6 @@ namespace LibraryReservation
             // People cannot change reservation 5 minutes before the reservation start!
             DateTime gracePeriod5min = DateTime.UtcNow.Subtract(new TimeSpan(0, -5, 0));
             DataTable roomList = db.QueryDBAsTable($"SELECT * FROM Reservations WHERE UserID = '{user.UserID}' AND DateTime > '{gracePeriod5min:s}'", true);
-            // Mungkin ganti ke class Reservations, terus buat get custom biar keliatannya enak.
             List<Reservation> reservedArray = new List<Reservation>();
             foreach (DataRow room in roomList.Rows)
             {

@@ -148,40 +148,5 @@ namespace LibraryReservation
                 lblDAvgTime.Text = $"Average Reserved Time: {average} hours";
             }
         }
-
-        private void lblDTotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDAvgTime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMUsed_Click(object sender, EventArgs e)
-        {
-            //most used room
-        }
-
-        private void lblLUsed_Click(object sender, EventArgs e)
-        {
-            //least used room
-        }
-
-        private void lblTotalHours_Click(object sender, EventArgs e)
-        {
-            //total hours booked
-        }
-
-        private void lblMAvgHours_Click(object sender, EventArgs e)
-        {
-            //avergae reserved time09
-        }
-
-        private void btnCheck_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

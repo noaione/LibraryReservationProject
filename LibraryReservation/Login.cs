@@ -63,12 +63,6 @@ namespace LibraryReservation
             }
         }
 
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnShowHide_Click(object sender, EventArgs e)
         {
             if (txtInPassword.PasswordChar == '*')

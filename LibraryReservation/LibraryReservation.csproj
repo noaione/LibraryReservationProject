@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseBridge.cs" />
-    <Compile Include="DataManager.cs" />
     <Compile Include="EditCancleRoom.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -79,7 +79,6 @@ namespace LibraryReservation
             this.lblDTotal.Size = new System.Drawing.Size(138, 13);
             this.lblDTotal.TabIndex = 3;
             this.lblDTotal.Text = "Total reservation: Unknown";
-            this.lblDTotal.Click += new System.EventHandler(this.lblDTotal_Click);
             // 
             // lblDAvgTime
             // 
@@ -90,7 +89,6 @@ namespace LibraryReservation
             this.lblDAvgTime.Size = new System.Drawing.Size(172, 13);
             this.lblDAvgTime.TabIndex = 4;
             this.lblDAvgTime.Text = "Average Reserved Time: 3.5 hours";
-            this.lblDAvgTime.Click += new System.EventHandler(this.lblDAvgTime_Click);
             // 
             // lblMonthlyTitle
             // 
@@ -110,7 +108,6 @@ namespace LibraryReservation
             this.lblMUsed.Size = new System.Drawing.Size(134, 13);
             this.lblMUsed.TabIndex = 6;
             this.lblMUsed.Text = "Most Used Room: Amber 2";
-            this.lblMUsed.Click += new System.EventHandler(this.lblMUsed_Click);
             // 
             // lblLUsed
             // 
@@ -120,7 +117,6 @@ namespace LibraryReservation
             this.lblLUsed.Size = new System.Drawing.Size(137, 13);
             this.lblLUsed.TabIndex = 7;
             this.lblLUsed.Text = "Least Used Room: Amber 1";
-            this.lblLUsed.Click += new System.EventHandler(this.lblLUsed_Click);
             // 
             // lblTotalHours
             // 
@@ -130,7 +126,6 @@ namespace LibraryReservation
             this.lblTotalHours.Size = new System.Drawing.Size(164, 13);
             this.lblTotalHours.TabIndex = 8;
             this.lblTotalHours.Text = "Total Hours Reserved: 200 hours";
-            this.lblTotalHours.Click += new System.EventHandler(this.lblTotalHours_Click);
             // 
             // lblMAvgHours
             // 
@@ -140,7 +135,6 @@ namespace LibraryReservation
             this.lblMAvgHours.Size = new System.Drawing.Size(163, 13);
             this.lblMAvgHours.TabIndex = 9;
             this.lblMAvgHours.Text = "Average Reserved Time: 2 hours";
-            this.lblMAvgHours.Click += new System.EventHandler(this.lblMAvgHours_Click);
             // 
             // btnBack
             // 

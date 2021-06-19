@@ -81,7 +81,6 @@ namespace LibraryReservation
             this.txtInFullName.Name = "txtInFullName";
             this.txtInFullName.Size = new System.Drawing.Size(155, 20);
             this.txtInFullName.TabIndex = 0;
-            this.txtInFullName.TextChanged += new System.EventHandler(this.txtInUsername_TextChanged);
             // 
             // lblUsername
             // 
@@ -98,7 +97,6 @@ namespace LibraryReservation
             this.txtInUsername.Name = "txtInUsername";
             this.txtInUsername.Size = new System.Drawing.Size(155, 20);
             this.txtInUsername.TabIndex = 1;
-            this.txtInUsername.TextChanged += new System.EventHandler(this.txtInFullName_TextChanged_1);
             this.txtInUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInUsername_KeyPress);
             // 
             // lblLoginClick
@@ -128,7 +126,6 @@ namespace LibraryReservation
             this.txtInPassword.PasswordChar = '*';
             this.txtInPassword.Size = new System.Drawing.Size(155, 20);
             this.txtInPassword.TabIndex = 2;
-            this.txtInPassword.TextChanged += new System.EventHandler(this.txtInFullName_TextChanged);
             // 
             // label1
             // 
@@ -165,7 +162,7 @@ namespace LibraryReservation
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // frmRegister
             // 
@@ -187,7 +184,6 @@ namespace LibraryReservation
             this.Controls.Add(this.txtInUsername);
             this.Name = "frmRegister";
             this.Text = "Library Reservation";
-            this.Load += new System.EventHandler(this.frmRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BtnShowHide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
