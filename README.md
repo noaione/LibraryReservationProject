@@ -83,6 +83,3 @@ After that, start the program and create a new user, you will need to set it man
 
 ## Acknowledgments
 This project use Icons from [Material Design Icons](https://materialdesignicons.com/)
-
-## Verification
-For verifying that this is our team project, here is a random 16 bytes hex that we will put on our project submission: **`44d62381aaf73845edcfcddd016e8a6e`**
