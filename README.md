@@ -1,10 +1,7 @@
 # Library Reservation
 An Introduction to Object-Oriented Programming project for university.
 
-This project was made by Group XX with the member of:
-- A
-- B
-- C
+This project was made by Group 15.
 
 ## Setup
 You need to have a database named LibraryDatabase in the project folder to start, and create a class named `LibrarySecrets` containing something like this:
@@ -86,3 +83,6 @@ After that, start the program and create a new user, you will need to set it man
 
 ## Acknowledgments
 This project use Icons from [Material Design Icons](https://materialdesignicons.com/)
+
+## Verification
+For verifying that this is our team project, here is a random 16 bytes hex that we will put on our project submission: **`44d62381aaf73845edcfcddd016e8a6e`**
