@@ -8,6 +8,7 @@ namespace LibraryReservation
     public partial class frmEditCancleRoom : Form
     {
         private static Users user;
+
         public frmEditCancleRoom(Users u)
         {
             InitializeComponent();
@@ -16,27 +17,21 @@ namespace LibraryReservation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lstRoom.SelectedIndex < 0)
+            Reservation sel = (Reservation)lstRoom.SelectedItem;
+            if (sel == null)
             {
                 MessageBox.Show("Please select a room first!");
                 return;
-
             }
-            else
+            DatabaseBridge db = new DatabaseBridge();
+
+            int alreadyRequested = db.CountTable("ReservationChanges", $"WHERE ReserveID = '{sel.ReserveID}' AND ApprovedFlag = 0");
+            if (alreadyRequested > 0)
             {
-                DatabaseBridge db = new DatabaseBridge();
-                Reservation sel = (Reservation)lstRoom.SelectedItem;
-
-                int alreadyRequested = db.CountTable("ReservationChanges", $"WHERE ReserveID = '{sel.ReserveID}' AND ApprovedFlag = 0");
-                if (alreadyRequested > 0)
-                {
-                    MessageBox.Show("You've already requested a change for this Reservation!");
-                    return;
-                }
-                Program.ReplaceForm(new frmEditRoomReservation(user, sel), this);
-
+                MessageBox.Show("You've already requested a change for this Reservation!");
+                return;
             }
-
+            Program.ReplaceForm(new frmEditRoomReservation(user, sel), this);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -77,7 +72,7 @@ namespace LibraryReservation
             lstRoom.DataSource = reservedArray;
             lstRoom.DisplayMember = "DisplayList";
             lstRoom.ValueMember = "ReserveID";
-
+            lstRoom.SelectedIndex = 0;
         }
     }
 }
