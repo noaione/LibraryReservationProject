@@ -3,6 +3,8 @@ An Introduction to Object-Oriented Programming project for university.
 
 This project was made by Group 15.
 
+Minimum of .NET Framework 4.7.2 required.
+
 ## Setup
 You need to have a database named LibraryDatabase in the project folder to start, and create a class named `LibrarySecrets` containing something like this:
 
