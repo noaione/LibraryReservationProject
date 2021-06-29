@@ -103,7 +103,7 @@ namespace LibraryReservation
             // 
             this.lblLoginClick.AutoSize = true;
             this.lblLoginClick.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblLoginClick.Location = new System.Drawing.Point(165, 270);
+            this.lblLoginClick.Location = new System.Drawing.Point(160, 270);
             this.lblLoginClick.Name = "lblLoginClick";
             this.lblLoginClick.Size = new System.Drawing.Size(42, 13);
             this.lblLoginClick.TabIndex = 5;
