@@ -70,7 +70,6 @@ namespace LibraryReservation
             // 
             // btnEdit
             // 
-            this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(376, 104);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
