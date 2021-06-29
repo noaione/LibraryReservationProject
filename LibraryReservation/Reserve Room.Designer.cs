@@ -160,7 +160,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblTitle);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmReserveRoom";
-            this.Text = "Reserve_Room";
+            this.Text = "Library Reservation - Reserve";
             this.Load += new System.EventHandler(this.Reserve_Room_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

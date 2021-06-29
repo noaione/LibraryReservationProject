@@ -118,7 +118,7 @@ namespace LibraryReservation
             this.Controls.Add(this.lblTitle);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEditCancleRoom";
-            this.Text = "Edit/Cancel Room";
+            this.Text = "Library Reservation - Edit/Cancel Room";
             this.Load += new System.EventHandler(this.frmEditCancleRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
