@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v1
+        name: Checkout Code
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v1
+
+      - name: Restore NuGet Packages
+        run: nuget restore LibraryReservation.sln
+
+      - name: Download and extract database
+        run: |
+          Invoke-WebRequest -Uri ${{ secrets.DATABASE_PATH }} -OutFile .\db.zip
+          7z x db.zip
+          Move-Item .\LibraryDatabase.mdf .\LibraryReservation\
+          Move-Item .\LibraryDatabase_log.ldf .\LibraryReservation\
+
+      - name: Download Secrets
+        run: |
+          Invoke-WebRequest -Uri ${{ secrets.EXTRA_FILE }} -OutFile .\LibraryReservation\LibrarySecrets.cs
+
+      - name: Build Release
+        run: msbuild LibraryReservation.sln /p:Configuration=Release /p:Platform="Any CPU"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: LibraryReservation_Release
+          path: LibraryReservation\bin\Release
